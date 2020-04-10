@@ -5,6 +5,14 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gridsome',
-  plugins: []
+    siteName: 'Gridsome',
+    plugins: [{
+        use: '@gridsome/source-strapi',
+        options: {
+            apiURL: 'http://localhost:1337',
+            contentTypes: ['pinturas', 'categorias'],
+            // Possibility to login with a Strapi user,
+            // when content types are not publicly available (optional).
+        }
+    }],
 }

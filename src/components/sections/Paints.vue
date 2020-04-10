@@ -1,0 +1,569 @@
+<template>
+<main>
+    <div data-scroll>
+        <section class="section intro">
+            <div class="intro__wrap">
+                <div class="intro__background-image">
+                    <img src="img/intro1.jpg" alt="Some image">
+                    <div class="intro__title">
+                        Watson Building, Dubai, 2020
+                    </div>
+                </div>
+                <div class="intro__foreground-image">
+                    <img 
+                        src="img/intro2.jpg" 
+                        class="js-image" 
+                        alt="Some image"
+                    >
+                </div>
+            </div>
+        </section>
+        <div 
+            v-for="(edge, edgeInedex) in $page.pinturas.edges" 
+            :key="edgeInedex"
+        >
+            <odd-paint
+                v-if="edgeInedex % 2 === 0"
+                v-bind="edge.node"
+            />
+            <even-paint
+                v-else
+                v-bind="edge.node"
+            />
+        </div>
+        <section class="section cuatro">
+            <ul>
+                <li
+                    v-for="categoria in $page.categorias.edges"
+                    :key="categoria.id"
+                >
+                    <h5>
+                        {{categoria.node.titulo}}
+                    </h5>
+                    <img 
+                        :src="`http://localhost:1337/${categoria.node.foto.url}`"
+                        class="js-image"
+                        alt="Some image"
+                    >
+                </li>
+            </ul>
+        </section>
+    </div>
+</main>
+</template>
+
+<script>
+import OddPaint from '@/components/ui/OddPaint.vue';
+import EvenPaint from '@/components/ui/EvenPaint.vue';
+
+export default {
+    name: 'paints', 
+    components: {
+        OddPaint,
+        EvenPaint
+    },
+};
+</script>
+
+<style lang='scss'>
+
+:root {
+	font-size: 18px;
+}
+
+body {
+	--color-text: #000;
+	--color-bg: #dde8eb;
+	--color-link: #4b4b4b;
+	--color-link-hover: #000;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: moderno-fb, serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+
+.js .loading::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--color-bg);
+}
+
+.js .loading::after {
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	border-radius: 50%;
+	opacity: 0.4;
+	background: var(--color-link);
+	animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+
+@keyframes loaderAnim {
+	to {
+		opacity: 1;
+		transform: scale3d(0.5,0.5,1);
+	}
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+}
+
+a:hover,
+a:focus {
+	color: var(--color-link-hover);
+	outline: none;
+	text-decoration: underline;
+}
+
+.message {
+	background: var(--color-text);
+	color: var(--color-bg);
+	padding: 1rem;
+	text-align: center;
+}
+
+.frame {
+	padding: 3rem 5vw;
+	text-align: center;
+	position: relative;
+	z-index: 1000;
+}
+
+.frame__title {
+	font-size: 1rem;
+	margin: 0 0 1rem;
+	font-weight: normal;
+}
+
+.frame__links {
+	display: inline;
+}
+
+.frame__links a:not(:last-child) {
+	margin-right: 1rem;
+}
+
+.frame__demos a:not(:last-child) {
+	margin-right: 2rem;
+}
+
+.frame__demos {
+	margin: 1rem 0;
+}
+
+.frame__demo {
+	white-space: nowrap;
+}
+
+.frame__demo--current,
+.frame__demo--current:hover {
+	color: var(--color-text);
+}
+
+.title {
+	font-family: paralucent, sans-serif;
+	font-weight: 700;
+}
+
+.js-image {
+	max-width: 100%;
+	display: block;
+}
+
+.loaded .js-image {
+	opacity: 0;
+}
+
+canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	pointer-events: none;
+}
+
+.header {
+	padding: 3rem;
+}
+
+.header__title {
+	font-family: paralucent, sans-serif;
+	font-size: 2rem;
+}
+
+.info {
+	margin: 0.5rem 0;
+	display: flex;
+}
+
+.info__link {
+	margin-right: 1.25rem;
+}
+
+.section {
+	padding: 20vh 0;
+	margin: 0 100px;
+	min-height: 100vh;
+}
+
+/*intro*/
+.intro {
+	text-align: right;
+	font-size: 18px;
+	padding-top: 100px;
+}
+
+.intro__title {
+	padding-top: 1em;
+	position: absolute;
+	bottom: -2em;
+	right: 0;
+}
+
+.intro__wrap {
+	position: relative;
+}
+
+.intro__background-image {
+	margin-right: 20%;
+	position: relative;
+}
+
+.intro__background-image img {
+	width: 100%;
+	display: block;
+}
+
+.intro__foreground-image {
+	position: absolute;
+	right: 0;
+	width: 60%;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+/*dos*/
+
+.meta {
+	font-family: paralucent, sans-serif;
+	font-weight: 700;
+}
+
+.meta__subtitle {
+	font-size: 1.2em;
+	white-space: nowrap;
+}
+
+.meta__title {
+	font-size: 2.5em;
+	white-space: nowrap;
+}
+
+/*tres*/
+.tres {
+	position: relative;
+}
+
+.tres__background {
+	position: relative;
+	width: 55%;
+	margin-top: -40%;
+	z-index: 1;
+}
+
+.tres__background img {
+	width: 100%;
+	display: block;
+}
+
+.tres__text {
+	position: absolute;
+	top: 100%;
+	width: 20em;
+	left: 0;
+	padding-top: 1em;
+}
+
+.tres .meta {
+	position: absolute;
+	right: -1em;
+	top: 100%;
+	width: 8em;
+	/*background: green;*/
+	transform-origin: 0 0;
+	transform: rotate(-90deg);
+	text-align: left;
+}
+
+.tres__foreground {
+	padding-right: 8em;
+	text-align: right;
+	display: inline-block;
+	width: 100%;
+	position: relative;
+	z-index: 2;
+}
+
+.tres__foreground-image {
+	float: right;
+	width: calc(70% - 8em);
+}
+
+.tres__foreground img {
+	width: 100%;
+	display: block;
+}
+
+/*cuatro*/
+.cuatro ul {
+	max-width: 800px;
+	margin: 100px auto;
+	list-style: none;
+	overflow: hidden;
+}
+
+.cuatro li {
+	width: 50%;
+	text-align: center;
+	float: left;
+	margin-bottom: 2em;
+}
+
+/*last*/
+.last {
+	margin: 100px auto 0 auto;
+	text-align: center;
+	padding-bottom: 30vh;
+}
+
+.last__image {
+	max-width: 480px;
+	margin: 0 auto;
+}
+
+.last img {
+	display: block;
+	max-width: 100%;
+}
+
+.button {
+	display: inline-block;
+	background: none;
+	border-radius: 0;
+	border: 1px solid #94a6ab;
+	cursor: pointer;
+	padding: 0.7em 1.3em;
+	font-size: 1em;
+	margin: 0 0.5em;
+}
+
+.button:focus {
+	outline: none;
+}
+
+.buttons {
+	margin-bottom: 100px;
+}
+
+
+@media (min-width: 1480px) {
+	.section {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 1200px;
+	}
+}
+
+@media screen and (min-width: 53em) {
+	.message {
+		display: none;
+	}
+	.frame {
+		position: fixed;
+		text-align: left;
+		z-index: 100;
+		top: 0;
+		left: 0;
+		display: grid;
+		align-content: space-between;
+		width: 100%;
+		max-width: none;
+		height: 100vh;
+		padding: 2rem;
+		grid-gap: 3rem;
+		pointer-events: none;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none; 
+		-ms-user-select: none; 
+		user-select: none; 
+		grid-template-columns: min-content min-content auto 300px;
+		grid-template-rows: auto auto auto;
+		grid-template-areas: 'title links info ...'
+							'... ... ... ...'
+							'... ... demos demos';
+	}
+	.frame__title-wrap {
+		grid-area: title;
+		display: flex;
+	}
+	.frame__title {
+		margin: 0;
+		white-space: nowrap;
+	}
+	.frame__info {
+		grid-area: info;
+	}
+	.frame__demos {
+		margin: 0;
+		grid-area: demos;
+		justify-self: end;
+	}
+	.frame__links {
+		grid-area: links;
+		padding: 0;
+		white-space: nowrap;
+		margin: 0 1rem;
+	}
+	.frame a {
+		pointer-events: auto;
+	}
+}
+
+@media (max-width: 750px) {
+
+	.section,
+	.last {
+		margin: 0 50px;
+	}
+
+	.last {
+		margin: 0 auto;
+	}
+
+	.intro__background-image {
+		position: static;
+	}
+
+	.intro__background-image img {
+		display: none;
+	}
+
+	.intro__foreground-image {
+		position: static;
+		margin: 0;
+		padding: 0;
+		transform: none;
+		width: auto;
+	}
+
+	.intro__foreground-image img {
+		display: block;
+		width: 100%;
+	}
+
+	.dos {
+		position: relative;
+	}
+
+	.dos__background {
+		position: static;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+	}
+
+	.dos__background-image {
+		padding-left: 3em;
+		min-height: 200px;
+	}
+
+	.dos__foreground {
+		margin: 0;
+		position: absolute;
+		left: 0;
+	}
+
+	.dos__foreground-image {
+		display: none;
+	}
+
+	.dos__foreground {
+		width: 0;
+	}
+
+	.dos__text {
+		position: static;
+		width: auto;
+		text-align: right;
+		margin: 1em 0;
+	}
+
+	.dos .meta {
+		transform: rotate(-90deg);
+		width: 8em;
+		left: -8em;
+		transform-origin: 100% 0;
+		top: 4em;
+		font-size: 0.5rem;
+	}
+
+	.tres .meta {
+		font-size: 0.5rem;
+	}
+
+	.tres__foreground-image {
+		width: 100%;
+		float: none;
+	}
+
+	.tres__background {
+		margin: 0;
+		width: auto;
+	}
+
+	.tres__background-image {
+		display: none;
+	}
+
+	.tres__text {
+		position: static;
+		width: auto;
+		margin: 0;
+	}
+
+	.cuatro li {
+		float: none;
+		width: auto;
+	}
+
+	.cuatro li img {
+		width: 100%;
+	}
+
+	.last__image {
+		margin: 0 20px;
+	}
+
+	.button {
+		font-size: 0.8em;
+	}
+}
+</style>
