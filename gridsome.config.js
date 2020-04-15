@@ -5,14 +5,19 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-    siteName: 'Gridsome',
+    siteName: 'Villartt',
     plugins: [{
-        use: '@gridsome/source-strapi',
-        options: {
-            apiURL: 'http://localhost:1337',
-            contentTypes: ['pinturas', 'categorias'],
-            // Possibility to login with a Strapi user,
-            // when content types are not publicly available (optional).
+            use: '@gridsome/source-strapi',
+            options: {
+                apiURL: 'http://localhost:1337',
+                contentTypes: ['pinturas', 'categorias'],
+            }
+        },
+        {
+            use: '@gridsome/plugin-google-analytics',
+            options: {
+                id: 'UA-163708146-1'
+            }
         }
-    }],
+    ],
 }

@@ -1,67 +1,52 @@
 <template>
-<main>
-    <div data-scroll>
-        <section class="section intro">
-            <div class="intro__wrap">
-                <div class="intro__background-image">
-                    <img src="img/intro1.jpg" alt="Some image">
-                    <div class="intro__title">
-                        Watson Building, Dubai, 2020
-                    </div>
-                </div>
-                <div class="intro__foreground-image">
-                    <img 
-                        src="img/intro2.jpg" 
-                        class="js-image" 
-                        alt="Some image"
-                    >
-                </div>
-            </div>
-        </section>
-        <div 
-            v-for="(edge, edgeInedex) in $page.pinturas.edges" 
-            :key="edgeInedex"
-        >
-            <odd-paint
-                v-if="edgeInedex % 2 === 0"
-                v-bind="edge.node"
-            />
-            <even-paint
-                v-else
-                v-bind="edge.node"
-            />
-        </div>
-        <section class="section cuatro">
-            <ul>
-                <li
-                    v-for="categoria in $page.categorias.edges"
-                    :key="categoria.id"
-                >
-                    <h5>
-                        {{categoria.node.titulo}}
-                    </h5>
-                    <img 
-                        :src="`http://localhost:1337/${categoria.node.foto.url}`"
-                        class="js-image"
-                        alt="Some image"
-                    >
-                </li>
-            </ul>
-        </section>
-    </div>
-</main>
+<div data-scroll>
+	<intro/>
+		<div 
+			v-for="(edge, edgeInedex) in $page.pinturas.edges" 
+			:key="edgeInedex"
+			class="paint-structure"
+		>
+			<odd-paint
+				v-if="edgeInedex % 2 === 0"
+				v-bind="edge.node"
+			/>
+			<even-paint
+				v-else
+				v-bind="edge.node"
+			/>
+		</div>
+	<categories/>
+</div>
 </template>
 
 <script>
 import OddPaint from '@/components/ui/OddPaint.vue';
 import EvenPaint from '@/components/ui/EvenPaint.vue';
+import intro from '@/components/sections/paints/intro.vue';
+import categories from '@/components/sections/paints/categories.vue';
+
+import gsap from 'gsap'
 
 export default {
     name: 'paints', 
     components: {
         OddPaint,
-        EvenPaint
-    },
+        EvenPaint,
+        intro,
+        categories,
+	},
+	mounted() {
+		gsap.from('.paint-structure',{
+			duration:0.5,
+			opacity:0,
+			scale:0,
+			y:200,
+			ease: 'power1',
+			stagger: {
+				each:0.2,
+			},
+		})
+	},
 };
 </script>
 
@@ -81,35 +66,6 @@ body {
 	font-family: moderno-fb, serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
-/* Page Loader */
-.js .loading::before,
-.js .loading::after {
-	content: '';
-	position: fixed;
-	z-index: 1000;
-}
-
-.js .loading::before {
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: var(--color-bg);
-}
-
-.js .loading::after {
-	top: 50%;
-	left: 50%;
-	width: 60px;
-	height: 60px;
-	margin: -30px 0 0 -30px;
-	border-radius: 50%;
-	opacity: 0.4;
-	background: var(--color-link);
-	animation: loaderAnim 0.7s linear infinite alternate forwards;
-
 }
 
 @keyframes loaderAnim {
@@ -316,7 +272,7 @@ canvas {
 	padding-right: 8em;
 	text-align: right;
 	display: inline-block;
-	width: 100%;
+	width: 100vh;
 	position: relative;
 	z-index: 2;
 }

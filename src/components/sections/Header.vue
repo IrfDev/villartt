@@ -1,32 +1,63 @@
 <template>
 <div class="demo-6 loading">
-    <main>
         <div class="content">
             <div class="content__drag-area">
                 <div class="img-wrap">
                     <div class="img-drag">
-                        <div class="img-drag__inner" style="background-image: url(http://localhost:1337//uploads/78cca663b2da43b1b053f17e827bd120.png);"></div>
+                        <div 
+							class="img-drag__inner"
+							:style="{'background-image': 'url('+require('@/static/villi.jpg')+')'}"
+						/>
+							<!-- :style="background-image: url(@/villi.jpg)" -->
                     </div>
                 </div>
                 <div class="img-wrap">
                     <div class="img-drag">
-                        <div class="img-drag__inner" style="background-image: url(http://localhost:1337//uploads/78cca663b2da43b1b053f17e827bd120.png);"></div>
+                        <div
+							class="img-drag__inner"
+							:style="{'background-image': 'url('+require('@/static/andrew.jpg')+')'}"
+						/>
                     </div>
                 </div>
             </div>
-            <div class="content__title">
-                <img src="https://i.ya-webdesign.com/images/mario-clipart-mario-cart-8.png" alt="" srcset="">
-            </div>
+			<transition
+				appear
+				@before-enter="beforeEnter"
+				@enter="enter"
+				:css="false"
+			>
+				<logo/>
+			</transition>
         </div>
-    </main>
 </div>
 </template>
 
 <script>
-import '@/static/dragAnimation.js'
+import '@/static/dragAnimation.js';
+import logo from '../ui/logo';
+import gsap from "gsap";
+
 export default {
-    name: 'Header'
-}
+	name: 'Header',
+	components: {
+		logo
+	},
+	methods: {
+		beforeEnter(el) {
+			el.style.opacity=0
+			el.style.transform ='scale(0,0)'
+		},
+		enter(el, done){
+			gsap.to(el, {
+				duration:1,
+				opacity:1,
+				scale:1,
+				ease: 'bounce.out',
+				onComplete:done
+			})
+		}
+	},
+};
 </script>
 
 <style lang='scss' >
@@ -49,6 +80,8 @@ export default {
 }
 
 .img-drag {
+	border-radius:8px;
+	box-shadow: 12px 2px 35px #00000030;
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -79,17 +112,13 @@ export default {
 	mix-blend-mode: difference;
 }
 
-:root {
-	font-size: 14px;
-}
-
 .demo-6 {
 	margin: 0;
 	--color-text: #000;
 	--color-link: #594343;
 	--color-link-hover: #000;
 	color: var(--color-text);
-	background-color: var(--color-bg)!important;
+	background-color: #E9BEC9;
 	--font-main: Geneva, Tahoma, Verdana, sans-serif;
 	--font-alt: bigmoore, serif;
 	--font-weight-alt: 400;
@@ -101,39 +130,11 @@ export default {
 }
 
 .demo-6 {
-	--color-text: #fff;
 	--color-link: #a17d66;
-    --color-bg: white!important;
+    --color-bg: #E9BEC8!important;
     --font-alt: bigmoore, serif;
 }
 
-/* Page Loader */
-.js .loading::before {
-	content: '';
-	position: fixed;
-	z-index: 100000;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: var(--color-bg);
-}
-
-.js .loading::after {
-	content: '';
-	position: fixed;
-	z-index: 100000;
-	top: 50%;
-	left: 50%;
-	width: 60px;
-	height: 60px;
-	margin: -30px 0 0 -30px;
-	pointer-events: none;
-	border-radius: 50%;
-	opacity: 0.4;
-	background: var(--color-link);
-	animation: loaderAnim 0.7s linear infinite alternate forwards;
-}
 
 @keyframes loaderAnim {
 	to {
@@ -197,7 +198,6 @@ a:focus {
 	display: flex;
 	position: relative;
 	flex-direction: column;
-	width: 100vh;
 	height: calc(100vh - 13rem);
 	position: relative;
 	justify-content: flex-start;
@@ -245,7 +245,7 @@ a:focus {
 
 .content__drag-area {
 	position: absolute;
-	width: 100%;
+	max-width: 90vw;
 	height: 100%;
 	display: flex;
 	align-items: center;

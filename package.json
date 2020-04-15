@@ -7,8 +7,11 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "@gridsome/plugin-google-analytics": "^0.1.0",
     "@gridsome/source-strapi": "^0.1.0",
-    "gridsome": "^0.7.0"
+    "gridsome": "^0.7.0",
+    "gsap": "^3.2.6",
+    "vue-analytics": "^5.22.1"
   },
   "devDependencies": {
     "node-sass": "^4.13.1",

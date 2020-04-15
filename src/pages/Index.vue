@@ -50,18 +50,19 @@ import paints from '@/components/sections/Paints.vue';
 
 export default {
   metaInfo: {
-    title: 'Villartt',
+    title: 'Inicio',
   },
   components: {
     Headerr,
     paints
   },
+
 };
 </script>
 
 <style lang="scss">
 html{
-  background-color: #DDE8EB;
+  background-color: #E9BEC9!important;
 }
 img{
   max-width:50%;
