@@ -1,38 +1,30 @@
 <template>
-<div class="demo-6 loading">
-        <div class="content">
-            <div class="content__drag-area">
-				<profile
-					v-for="(user,userIndex) in $page.users.edges"
-					:key="userIndex"
-					:image="user.node.imagen.url"
-				/>
-            </div>
-			<transition
-				appear
-				@before-enter="beforeEnter"
-				@enter="enter"
-				:css="false"
-			>
-				<logo/>
-			</transition>
-        </div>
+<div class="img-wrap">
+    <div class="img-drag">
+        <div 
+            class="img-drag__inner"
+            :style="`background-image: url(http://localhost:1337${image}`"
+        />
+    </div>
 </div>
 </template>
 
 <script>
 import '@/static/dragAnimation.js';
 import logo from '../ui/logo';
-import profile from '../ui/profile'
-
 import gsap from "gsap";
 
 export default {
 	name: 'Header',
 	components: {
-		logo,
-		profile
+		logo
 	},
+    props: {
+        image:{
+            type: String,
+            require: true,
+        }
+    },
 	methods: {
 		beforeEnter(el) {
 			el.style.opacity=0

@@ -40,6 +40,16 @@ query {
       } 
     }
   }
+  users:allStrapiUsers (filter: { role: {name: {eq:"Villas"} }}){
+    edges{
+      node{
+        username
+        imagen{
+          url
+        }
+      }
+    }
+  }
 }
 
 </page-query>

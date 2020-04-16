@@ -10,7 +10,7 @@ module.exports = {
             use: '@gridsome/source-strapi',
             options: {
                 apiURL: 'http://localhost:1337',
-                contentTypes: ['pinturas', 'categorias'],
+                contentTypes: ['pinturas', 'categorias', 'users'],
             }
         },
         {
