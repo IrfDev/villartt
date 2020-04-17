@@ -66,14 +66,10 @@ export default {
     Headerr,
     paints
   },
-
 };
 </script>
 
 <style lang="scss">
-html{
-  background-color: #E9BEC9!important;
-}
 img{
   max-width:50%;
 }

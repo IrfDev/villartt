@@ -114,7 +114,6 @@ export default {
 	--font-alt: bigmoore, serif;
 	--font-weight-alt: 400;
 	--color-title: inherit;
-	font-family: var(--font-main);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	line-height: 1;
@@ -178,7 +177,6 @@ a:focus {
 }
 
 .frame__initials {
-	font-family: var(--font-alt);
 	font-weight: var(--font-weight-alt);
 	font-size: 2rem;
 	pointer-events: none;
@@ -191,13 +189,12 @@ a:focus {
 	flex-direction: column;
 	height: calc(100vh - 13rem);
 	position: relative;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: center;
 }
 
 .content__title {
 	font-size: 10vw;
-	font-family: var(--font-alt);
 	font-weight: var(--font-weight-alt);
 	margin: 0;
 	position: relative;
@@ -246,13 +243,6 @@ a:focus {
 .img-drag,
 .img-wrap {
 	flex: none;
-}
-
-@media screen and (max-width: 42em) {
-	.content .img-drag,
-	.content .img-wrap {
-		margin: 1rem;
-	}
 }
 
 @media screen and (min-width: 53em) {
@@ -334,8 +324,8 @@ a:focus {
 
 .img-drag {
 	position: relative;
-	width: 100%;
-	height: 100%;
+	width: 70%;
+	height: 70%;
 	overflow: hidden;
 	opacity: 1;
 	pointer-events: auto;

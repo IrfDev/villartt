@@ -102,11 +102,10 @@ export default {
 	--color-link-hover: #000;
 	color: var(--color-text);
 	background-color: #E9BEC9;
-	--font-main: Geneva, Tahoma, Verdana, sans-serif;
-	--font-alt: bigmoore, serif;
+	--font-main: Futura;
+	--font-alt: Montserrat;
 	--font-weight-alt: 400;
 	--color-title: inherit;
-	font-family: var(--font-main);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	line-height: 1;
@@ -176,17 +175,6 @@ a:focus {
 	pointer-events: none;
 	line-height: 14px;
 }
-
-.content {
-	display: flex;
-	position: relative;
-	flex-direction: column;
-	height: calc(100vh - 13rem);
-	position: relative;
-	justify-content: flex-start;
-	align-items: center;
-}
-
 .content__title {
 	font-size: 10vw;
 	font-family: var(--font-alt);
@@ -243,9 +231,15 @@ a:focus {
 @media screen and (max-width: 42em) {
 	.content .img-drag,
 	.content .img-wrap {
-		margin: 1rem;
-	}
-}
+		margin: 0;
+		--img-width: 140px;
+		--img-height: 191px;
+		width: var(--img-width);
+		height: var(--img-height);
+		position: relative;
+		pointer-events: none;
+		// margin: 4rem;
+}}
 
 @media screen and (min-width: 53em) {
 	.frame {
@@ -307,8 +301,8 @@ a:focus {
 	}
 }
 .img-wrap {
-	--img-width: 200px;
-	--img-height: 270px;
+	--img-width: 300px!important;
+	--img-height: 370px!important;
 	width: var(--img-width);
 	height: var(--img-height);
 	position: relative;

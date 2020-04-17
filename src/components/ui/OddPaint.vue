@@ -1,92 +1,157 @@
 <template>
-  <section class="section dos">
-                <div class="dos__foreground">
-                    <div class="meta">
-                        <h3 class="meta__subtitle">~{{categoria.titulo}}</h3>
-                        <h2 class="meta__title">-{{titulo}}</h2>
-                    </div>
-                    <div class="dos__foreground-image">
-                        <img 
-                            :src="`http://localhost:1337/${fotos.url}`" 
-                            alt="Some image"
-                        >
-                    </div>
-                </div>
-                <div class="dos__background">
-                    <div class="dos__background-image">
-                        <img 
-                            :src="`http://localhost:1337/${fotos.url}`" 
-                            class="js-image"
-                            alt="Some image"
-                        >
-                    </div>
-                    <div class="dos__text">
-                        <p>
-                            {{descripcion}}.<br>
-                            Vendido a {{cliente}}.<br>
-                            {{fecha}}
-                        </p>
-                    </div>
-                </div>
-            </section>
+<Intersect @enter="helloThere" @leave="goodByeThere">
+    <div class="
+        main-paint
+        row
+    ">
+            <div 
+                class="
+                    meta
+                    col-md-1
+                    col-12
+                    order-md-1
+                    order-2
+                "
+            >
+                <h3 class="subtitle">~{{categoria.titulo}}</h3>
+                <h2 class="title">-{{titulo}}</h2>
+            </div>
+            <div class="
+                paint
+                col-9
+                order-md-2
+                order-1
+                col-md-9
+                col-11
+            ">
+                <img 
+                    v-for="(foto, fotoIndex) in fotos"
+                    :key="fotoIndex"
+                    :src="`http://localhost:1337/${foto.url}`" 
+                    class="js-image"
+                    alt="Some image"
+                >
+            </div>
+            <div class="
+                text
+                col-12
+                col-md-2
+                order-md-3
+                order-3
+                text-center
+                text-md-left
+            ">
+                <p>
+                    {{descripcion}}.<br>
+                    Vendido a {{cliente}}.<br>
+                    {{fecha}}
+                </p>
+        </div>
+    </div>
+</Intersect>
 </template>
 
 <script>
+import Intersect from 'vue-intersect'
+
 export default {
     name: 'OddPaint',
+    components: {
+        Intersect
+    },
     props: {
-        titulo:String,
+       titulo:String,
         cliente:String,
-        Artista: String,
-        fecha:Date,
+        Artista: [String, Object],
+        fecha:[Date, String],
         fotos:Object,
         descripcion:String,
         categoria:Object,
-    }
+    },methods: {
+        //  helloThere(){
+        //      var tl = new TimelineMax;
+     
+        //      tl.fromTo('.dos img', 1, {x:-200,opacity:0,},{x:0,opacity:1})
+        //  },
+        //  goodByeThere(){
+        //      var tl = new TimelineMax;
+     
+        //      tl.fromTo('.dos img', .5, {x:0,opacity:1},{x:-200,opacity:0})
+        //  },
+    },
 }
 </script>
 
 <style lang='scss' scoped>
-
-.dos {
-	margin: 100px 50px;
-	position: relative;
+@media screen and (max-width: 768px) {
+    .main-paint{
+    .meta{
+        transform:none!important;
+    }
+    img{
+        position:absolute
+    }
+    img:nth-of-type(1){
+        min-width:70vw!important;
+    }
+    img:nth-of-type(2){
+        min-width: 45vw !important;
+    }
+    .text{
+        font-size:1em!important;
+    }
+    }
 }
-
-.dos img {
-	max-width: 100%;
-	display: block;
-	width: 100%;
+@media screen and (max-width: 900px) {
+    .main-paint{
+        .meta{
+            top:10%!important;
+            .title{
+                font-size:2.5em!important;
+            }
+            .subtitle{
+                font-size:1em!important;
+            }
+        }
+    }
 }
-
-.dos__foreground {
-	width: 40%;
-	position: relative;
-	padding-left: 6em;
-}
-
-.dos__background {
-	text-align: right;
-	margin-left: 30%;
-	position: relative;
-	margin-top: -14vh;
-}
-
-.dos__text {
-	position: absolute;
-	bottom: 0;
-	width: 40%;
-	right: calc(100% + 1em);
-}
-
-.dos .meta {
-	position: absolute;
-	left: 0;
-	/*right: 0;*/
-	/*left: auto;*/
-	top: 100%;
-	transform: rotate(-90deg);
-	transform-origin: 0 0;
-
+.main-paint{
+    margin:40vh 0vh;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    .meta{
+        transform-origin: 0 0;
+        transform: rotate(-90deg);
+        white-space: nowrap;
+        top:300px;
+        .subtitle{
+            font-family: 'Courier New';
+        }
+        .title{
+            font-family: Montserrat;
+            font-weight: 800;
+            font-size:3.5em;
+        }
+    }
+    .text{
+        font-family: 'Courier New';
+        font-size: 1.5em;
+    }
+    img{
+        position: absolute;
+        border-radius:8px;
+    }
+    img:nth-of-type(1){
+        position: relative;
+        bottom: 30%;
+        max-width:60vw!important;
+        box-shadow: 5px 4px 30px rgba(0, 0, 0, 0.289);
+    }
+    img:nth-of-type(2){
+        bottom:0%;
+        right:0%;
+        max-width:35vw!important;
+    }
 }
 </style>

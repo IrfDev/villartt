@@ -14,7 +14,9 @@ export default {
 
 <style lang='scss' scoped>
 h1{
-    color:burlywood;
+    color: burlywood;
     font-family: sociere;
+    font-size: 2.5em;
+    font-weight: bold;
 }
 </style>

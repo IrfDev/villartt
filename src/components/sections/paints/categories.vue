@@ -33,7 +33,7 @@ export default {
             x:-500,
 			ease: 'power1',
 			stagger: {
-				each:0.3,
+				each:3,
 			},
 		})
 	},

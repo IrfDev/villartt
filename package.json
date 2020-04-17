@@ -9,9 +9,15 @@
   "dependencies": {
     "@gridsome/plugin-google-analytics": "^0.1.0",
     "@gridsome/source-strapi": "^0.1.0",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.11.0",
     "gridsome": "^0.7.0",
     "gsap": "^3.2.6",
-    "vue-analytics": "^5.22.1"
+    "scrollmagic": "^2.0.7",
+    "vue": "^2.6.11",
+    "vue-analytics": "^5.22.1",
+    "vue-intersect": "^1.1.6",
+    "vue-scrollmagic": "^1.2.0"
   },
   "devDependencies": {
     "node-sass": "^4.13.1",
