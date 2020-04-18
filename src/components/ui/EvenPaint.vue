@@ -16,18 +16,25 @@
             text-md-right
             align-self-center
         ">
-            <p>
-                {{descripcion}}.<br>
-                Vendido a {{cliente}}.<br>
+          <p>
+            {{descripcion}}.<br>
+                Vendido a 
+            <b
+                :style="`color: ${Color}`"
+            >
+                @{{cliente}}.<br>
+            </b>
+            <i>
                 {{fecha}}
-            </p>
+            </i>
+        </p>
         </div>
             <div class="
                 paint
                 order-md-2
                 order-2
                 col-md-9
-                col-11
+                col-12
             ">
                 <img 
                     v-for="(foto, fotoIndex) in fotos"
@@ -39,7 +46,12 @@
             </div>
             <div class="meta col-md-1 col-12 order-md-3 order-1">
                 <h3 class="subtitle">~{{categoria.titulo}}</h3>
-                <h2 class="title">-{{titulo}}</h2>
+                <h2
+                    class="title"
+                    :style="`color: ${Color}`"
+                >
+                    -{{titulo}}
+                </h2>
             </div>
     </div>
 </Intersect>
@@ -59,20 +71,21 @@ export default {
         cliente:String,
         Artista: [String, Object],
         fecha:[Date, String],
-        fotos:Object,
+        fotos:[Object,Array],
         descripcion:String,
         categoria:Object,
+        Color:[String, null,Number]
     },
      methods: {
         //  helloThere(){
         //      var tl = new TimelineMax;
      
-        //      tl.fromTo('.tres img', 1, {x:-200,opacity:0,},{x:0,opacity:1})
+        //      tl.fromTo('.paint img', 1, {x:-200,opacity:0,},{x:0,opacity:1})
         //  },
         //  goodByeThere(){
         //      var tl = new TimelineMax;
      
-        //      tl.fromTo('.tres img', .5, {x:0,opacity:1},{x:-200,opacity:0})
+        //      tl.fromTo('.paint img', .5, {x:0,opacity:1},{x:-200,opacity:0})
         //  },
     },
 };
@@ -83,12 +96,14 @@ export default {
     .main-paint{
     .meta{
         transform:none!important;
+        text-align:center;
     }
     img{
         position:absolute;
     }
     img:nth-of-type(1){
         min-width:70vw!important;
+        left:25%!important;
     }
     img:nth-of-type(2){
         min-width: 45vw !important;

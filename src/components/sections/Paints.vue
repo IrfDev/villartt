@@ -4,7 +4,6 @@
 			v-for="(edge, edgeInedex) in $page.pinturas.edges" 
 			:key="edgeInedex"
 			class="
-			
 				paint-structure
 				d-flex
 				flex-column
@@ -20,15 +19,12 @@
 				v-bind="edge.node"
 			/>
 		</div>
-	<categories/>
 </div>
 </template>
 
 <script>
 import OddPaint from '@/components/ui/OddPaint.vue';
 import EvenPaint from '@/components/ui/EvenPaint.vue';
-import intro from '@/components/sections/paints/intro.vue';
-import categories from '@/components/sections/paints/categories.vue';
 
 import gsap from 'gsap'
 
@@ -37,8 +33,6 @@ export default {
     components: {
         OddPaint,
         EvenPaint,
-        intro,
-        categories,
 	},
 	mounted() {
 		gsap.from('.paint-structure',{

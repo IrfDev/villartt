@@ -14,7 +14,12 @@
                 "
             >
                 <h3 class="subtitle">~{{categoria.titulo}}</h3>
-                <h2 class="title">-{{titulo}}</h2>
+                <h2
+                    class="title"
+                    :style="`color: ${Color}`"
+                >
+                    -{{titulo}}
+                </h2>
             </div>
             <div class="
                 paint
@@ -22,7 +27,7 @@
                 order-md-2
                 order-1
                 col-md-9
-                col-11
+                col-12
             ">
                 <img 
                     v-for="(foto, fotoIndex) in fotos"
@@ -42,8 +47,13 @@
                 text-md-left
             ">
                 <p>
-                    {{descripcion}}.<br>
-                    Vendido a {{cliente}}.<br>
+                    {{descripcion}}.
+                    Vendido a 
+                    <b
+                        :style="`color: ${Color}`"
+                    >
+                        @{{cliente}}.<br>
+                    </b>
                     {{fecha}}
                 </p>
         </div>
@@ -64,9 +74,10 @@ export default {
         cliente:String,
         Artista: [String, Object],
         fecha:[Date, String],
-        fotos:Object,
+        fotos:[Object,Array],
         descripcion:String,
         categoria:Object,
+        Color:[String, Number]
     },methods: {
         //  helloThere(){
         //      var tl = new TimelineMax;
@@ -87,6 +98,7 @@ export default {
     .main-paint{
     .meta{
         transform:none!important;
+        text-align:center;
     }
     img{
         position:absolute

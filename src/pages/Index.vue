@@ -2,6 +2,7 @@
   <Layout>
     <headerr/>
     <paints/>
+    <categories/>
   </Layout>
 </template>
 
@@ -18,6 +19,7 @@ query {
         }
         id
         cliente
+        Color
         titulo
         descripcion
         Artista{
@@ -34,6 +36,14 @@ query {
     edges{
       node{
         titulo
+        Descripci_n
+        pinturas{
+          titulo
+          descripcion
+          fotos{
+            url
+          }
+        }
         foto{
           url
         }
@@ -57,6 +67,7 @@ query {
 <script>
 import Headerr from '@/components/sections/Header.vue';
 import paints from '@/components/sections/Paints.vue';
+import categories from '@/components/sections/paints/categories.vue';
 
 export default {
   metaInfo: {
@@ -64,7 +75,8 @@ export default {
   },
   components: {
     Headerr,
-    paints
+    paints,
+    categories,
   },
 };
 </script>
