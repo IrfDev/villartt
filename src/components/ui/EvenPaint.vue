@@ -1,5 +1,4 @@
 <template>
-<Intersect @enter="helloThere" @leave="goodByeThere">
  <div class="
         mt-3
         main-paint
@@ -54,7 +53,6 @@
                 </h2>
             </div>
     </div>
-</Intersect>
 </template>
 
 <script>
@@ -76,25 +74,13 @@ export default {
         categoria:Object,
         Color:[String, null,Number]
     },
-     methods: {
-        //  helloThere(){
-        //      var tl = new TimelineMax;
-     
-        //      tl.fromTo('.paint img', 1, {x:-200,opacity:0,},{x:0,opacity:1})
-        //  },
-        //  goodByeThere(){
-        //      var tl = new TimelineMax;
-     
-        //      tl.fromTo('.paint img', .5, {x:0,opacity:1},{x:-200,opacity:0})
-        //  },
-    },
 };
 </script>
 
 <style lang='scss' scoped>
 @media screen and (max-width: 768px) {
     .main-paint{
-    margin:30vh 0vh;
+        margin: 9vh 0vh!important;
     .meta{
         transform:none!important;
         text-align:center;

@@ -3,6 +3,7 @@
     <headerr/>
     <paints/>
     <categories/>
+    <artists/>
   </Layout>
 </template>
 
@@ -54,6 +55,7 @@ query {
     edges{
       node{
         username
+        about
         imagen{
           url
         }
@@ -68,6 +70,7 @@ query {
 import Headerr from '@/components/sections/Header.vue';
 import paints from '@/components/sections/Paints.vue';
 import categories from '@/components/sections/paints/categories.vue';
+import Artists from '@/components/sections/Artists.vue';
 
 export default {
   metaInfo: {
@@ -77,6 +80,7 @@ export default {
     Headerr,
     paints,
     categories,
+    Artists,
   },
 };
 </script>

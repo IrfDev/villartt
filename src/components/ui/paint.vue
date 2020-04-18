@@ -36,7 +36,7 @@ export default {
         descripcion:String,
         categoria:Object,
     },
-}
+};
 </script>
 
 <style lang='scss' scoped>

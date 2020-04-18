@@ -2,7 +2,7 @@
 <div>
 
     <h1
-        class="text-center"
+        class="text-center cat"
     >
         Categorías
     </h1>
@@ -140,7 +140,7 @@ export default {
                     from: 'center',
                 },
             });
-        }
+        },
     },
 };
 </script>
@@ -160,6 +160,9 @@ export default {
         padding:30% 10%!important;
     }
 }
+// .cat{
+//     text-decoration: underline;
+// }
 .title{
     font-size:4em;
     font-weight: 400;
@@ -187,7 +190,7 @@ h1{
 }
 h5{
     font-family: 'Courier New';
-    font-size: 1.5em;
+    font-size: 2em;
 }
 .row{
     margin:0;

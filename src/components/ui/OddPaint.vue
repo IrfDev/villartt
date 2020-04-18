@@ -1,5 +1,4 @@
 <template>
-<Intersect @enter="helloThere" @leave="goodByeThere">
     <div class="
         main-paint
         row
@@ -58,7 +57,6 @@
                 </p>
         </div>
     </div>
-</Intersect>
 </template>
 
 <script>
@@ -78,19 +76,8 @@ export default {
         descripcion:String,
         categoria:Object,
         Color:[String, Number]
-    },methods: {
-        //  helloThere(){
-        //      var tl = new TimelineMax;
-     
-        //      tl.fromTo('.dos img', 1, {x:-200,opacity:0,},{x:0,opacity:1})
-        //  },
-        //  goodByeThere(){
-        //      var tl = new TimelineMax;
-     
-        //      tl.fromTo('.dos img', .5, {x:0,opacity:1},{x:-200,opacity:0})
-        //  },
     },
-}
+};
 </script>
 
 <style lang='scss' scoped>
