@@ -116,6 +116,7 @@ export default {
 }
 @media screen and (max-width: 900px) {
     .main-paint{
+        margin:20vh 0vh!important;
         .meta{
             top:10%!important;
             .title{

@@ -94,6 +94,7 @@ export default {
 <style lang='scss' scoped>
 @media screen and (max-width: 768px) {
     .main-paint{
+    margin:30vh 0vh;
     .meta{
         transform:none!important;
         text-align:center;

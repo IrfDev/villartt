@@ -8,7 +8,7 @@
     <img
         :src="`http://localhost:1337${fotos[0].url}`"
         class="card-img img-fluid"
-        alt=""
+        :alt="`Villartt ${categoria}`"
     >
     <div class="card-img-overlay align-center
      d-flex
@@ -40,6 +40,19 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@media screen and (max-width: 768px) {
+    .card:hover{
+        img{
+            filter:blur(2px)invert(100%)!important;
+        }
+        .card-title{
+            font-size: .8em!important;
+        }
+        p{
+            font-size:.6em!important;
+        }
+    }
+}
 p{
     transition:.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     opacity:0;
@@ -64,7 +77,6 @@ img{
 }
 .card:hover{
     img{
-        box-shadow: 5px 4px 30px rgba(0, 0, 0, 0.481);
         transition:.6s cubic-bezier(0.6, -0.28, 0.735, 0.045);
         filter: invert(100%) blur(8px);
         opacity:.5;

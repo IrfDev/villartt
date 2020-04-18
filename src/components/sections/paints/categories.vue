@@ -16,7 +16,13 @@
         <div
             v-for="categoria in $page.categorias.edges"
             :key="categoria.id"
-            class="category col mt-3 mb-3"
+            class="
+                category
+                col
+                mt-3
+                mb-3
+                align-self-stretch
+            "
             @click="activeCategory(categoria.node)"
         >
             <h5
@@ -80,12 +86,11 @@ export default {
 			duration:1,
 			opacity:0,
 			scale:0,
-            y:100,
-            x:-500,
+            y:150,
 			ease: 'power1',
 			stagger: {
                 each:.3,
-                from:'end'
+                from:'center'
 			},
         });
         
@@ -141,6 +146,20 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@media screen and (max-width: 768px) {
+    .title{
+        font-size:2em!important;
+    }
+    h1{
+        font-size:3em!important;
+    }
+    h5{
+        font-size:1em!important;
+    }
+    .active{
+        padding:30% 10%!important;
+    }
+}
 .title{
     font-size:4em;
     font-weight: 400;
@@ -153,6 +172,7 @@ p{
     border-radius:8px;
     background-attachment: fixed;
     background-size: cover;
+    background-position: center;
     transition:.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .active{
