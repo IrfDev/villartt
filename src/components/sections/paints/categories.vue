@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import gsap,{TimelineMax} from 'gsap';
+import gsap from 'gsap';
 import paint from '@/components/ui/paint';
 
 export default {
@@ -82,6 +82,8 @@ export default {
         paint,
     },
     mounted() {
+        const getGsap = () => import('gsap');
+
 		gsap.from('.category',{
 			duration:1,
 			opacity:0,
