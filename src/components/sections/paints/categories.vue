@@ -1,11 +1,11 @@
 <template>
 <div>
-
     <h1
         class="text-center cat"
     >
         Categorías
     </h1>
+    
     <div
         class="
             row
@@ -13,6 +13,11 @@
             text-center
         "
     >
+    <observer
+        @intersect="intersected"
+        v-bind="options"
+        :id="'categories'"
+    />
         <div
             v-for="categoria in $page.categorias.edges"
             :key="categoria.id"
@@ -73,51 +78,46 @@
 </template>
 
 <script>
-import gsap from 'gsap';
+import observer from '@/components/utilities/observer';
+import {TweenMax} from 'gsap'
 import paint from '@/components/ui/paint';
 
 export default {
     name: 'Categories',
     components:{
         paint,
-    },
-    mounted() {
-        const getGsap = () => import('gsap');
-
-		gsap.from('.category',{
-			duration:1,
-			opacity:0,
-			scale:0,
-            y:150,
-			ease: 'power1',
-			stagger: {
-                each:.3,
-                from:'center'
-			},
-        });
-        
-		
+        observer,
     },
     data() {
            return {
                active:false,
                categoryPaints:[],
                categoryTitle:'',
-               categoryDescription:''
+               categoryDescription:'',
+               options:{
+                   rootMargin:[0.25],
+               }
            };
     },
     methods:{
+        intersected(){
+            TweenMax.from('.category',
+            {
+                duration:1,
+                opacity:0,
+                scale:0,
+                y:150,
+                ease: 'power1',
+                stagger: {
+                    each:.3,
+                    from:'center'
+                },
+            },
+        );
+        },
         activeCategory({titulo, pinturas, Descripci_n}){
-            if (this.active!==true) {
-                this.active=true;
-                this.categoryPaints=pinturas;
-                this.categoryTitle=titulo;
-                this.categoryDescription=Descripci_n;
-            } else {
-                this.categoryTitle=titulo;
-                this.categoryDescription=Descripci_n;
-                this.categoryPaints=pinturas;
-                gsap.from('.ind-paint',{
+            function animation() {
+                   TweenMax.from('.ind-paint',{
                     duration:.5,
                     opacity:0,
                     scale:0.1,
@@ -129,9 +129,20 @@ export default {
                     },
                 });
             }
+            if (this.active!==true) {
+                this.active=true;
+                this.categoryPaints=pinturas;
+                this.categoryTitle=titulo;
+                this.categoryDescription=Descripci_n;
+            } else {
+                this.categoryTitle=titulo;
+                this.categoryDescription=Descripci_n;
+                this.categoryPaints=pinturas;
+            }
+                animation()
         },
         enter(){
-            gsap.from('.ind-paint',{
+            TweenMax.from('.ind-paint',{
                 duration:.5,
                 opacity:0,
                 scale:0.1,

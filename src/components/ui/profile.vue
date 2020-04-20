@@ -25,21 +25,21 @@ export default {
             require: true,
         }
     },
-	methods: {
-		beforeEnter(el) {
-			el.style.opacity=0
-			el.style.transform ='scale(0,0)'
-		},
-		enter(el, done){
-			gsap.to(el, {
-				duration:1,
-				opacity:1,
-				scale:1,
-				ease: 'bounce.out',
-				onComplete:done
-			})
-		}
-	},
+	// methods: {
+	// 	beforeEnter(el) {
+	// 		el.style.opacity=0
+	// 		el.style.transform ='scale(0,0)'
+	// 	},
+	// 	enter(el, done){
+	// 		gsap.to(el, {
+	// 			duration:1,
+	// 			opacity:1,
+	// 			scale:1,
+	// 			ease: 'bounce.out',
+	// 			onComplete:done
+	// 		})
+	// 	}
+	// },
 };
 </script>
 
@@ -229,6 +229,9 @@ a:focus {
 }
 
 @media screen and (max-width: 42em) {
+	.img-wrap:nth-child(1) {
+		left: 17vh;
+	}
 	.content .img-drag,
 	.content .img-wrap {
 		margin: 0;
@@ -238,10 +241,14 @@ a:focus {
 		height: var(--img-height);
 		position: relative;
 		pointer-events: none;
+		
 		// margin: 4rem;
 }}
 
 @media screen and (min-width: 53em) {
+	.img-wrap:nth-child(1) {
+		left: 30vh;
+	}
 	.frame {
 		position: fixed;
 		text-align: left;
@@ -307,7 +314,6 @@ a:focus {
 	height: var(--img-height);
 	position: relative;
 	pointer-events: none;
-	margin: 4rem;
 }
 
 .img-wrap:nth-child(1) {

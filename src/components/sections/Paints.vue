@@ -26,26 +26,12 @@
 import OddPaint from '@/components/ui/OddPaint.vue';
 import EvenPaint from '@/components/ui/EvenPaint.vue';
 
-import gsap from 'gsap'
-
 export default {
     name: 'paints', 
     components: {
         OddPaint,
         EvenPaint,
-	},
-	mounted() {
-		gsap.from('.paint-structure',{
-			duration:0.5,
-			opacity:0,
-			scale:0,
-			y:200,
-			ease: 'power1',
-			stagger: {
-				each:0.2,
-			},
-		})
-	},
+	}
 };
 </script>
 

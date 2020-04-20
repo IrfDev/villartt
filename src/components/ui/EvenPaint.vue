@@ -1,10 +1,17 @@
 <template>
- <div class="
+ <div
+    class="
         mt-3
         main-paint
         row
         d-flex
-    ">
+    "
+    :id="`even-paint-${id}`"
+>
+<observer
+        @intersect="intersected"
+        v-bind="options"
+    />
         <div class="
             text
             col-md-2
@@ -39,7 +46,7 @@
                     v-for="(foto, fotoIndex) in fotos"
                     :key="fotoIndex"
                     :src="`http://localhost:1337/${foto.url}`" 
-                    class="js-image"
+                    :class="`even-paint-pic-${fotoIndex}`"
                     alt="Some image"
                 >
             </div>
@@ -56,14 +63,24 @@
 </template>
 
 <script>
-import {TimelineMax} from 'gsap'
-import Intersect from 'vue-intersect'
+import observer from '@/components/utilities/observer';
+
+import gsap from 'gsap'
+let masterTL= gsap.timeline()
 
 export default {
     name: 'EvenPaint',
     components: {
-        Intersect
+        observer,
     },
+    data() {
+        return {
+            options:
+            {
+                threshold:0.5,
+            }
+        }
+    }, 
     props: {
         titulo:String,
         cliente:String,
@@ -72,7 +89,56 @@ export default {
         fotos:[Object,Array],
         descripcion:String,
         categoria:Object,
-        Color:[String, null,Number]
+        Color:[String, null,Number],
+        id:[Number,String]
+    },
+    methods: {
+        intersected() {
+            masterTL.add(this.paintsTL())
+                .add(this.metaTL())
+                .play()
+        },
+        metaTL() {
+            let tl = gsap.timeline()
+             tl.fromTo(`#even-paint-${this.id} .meta`,1,{
+                opacity:0, 
+                scale:0, 
+                x:0, 
+            }, { 
+                opacity:1, 
+                scale:1, 
+                x:0, 
+                ease: 'circ',
+            },'<');
+        },
+        paintsTL() {
+            let tl = gsap.timeline()
+            tl.fromTo(`#even-paint-${this.id} .even-paint-pic-0`,1,{
+                x:-500, 
+                y:-100,
+                scale:0,
+            }, { 
+                scale:1,
+                x:0,
+                y:0,
+                zIndex:0,
+                ease: 'circ',
+            },'<');
+
+            tl.fromTo(`#even-paint-${this.id} .even-paint-pic-1`,1,{
+                opacity:.8,
+                scale:2.5,
+                x:270, 
+                y:60,
+            }, {
+                scale:1,
+                opacity:1,
+                x:0,
+                y:0,
+                zIndex:1,
+                ease: 'slow',
+            },'<');
+        },
     },
 };
 </script>
@@ -84,6 +150,7 @@ export default {
     .meta{
         transform:none!important;
         text-align:center;
+        right: 0%!important;
     }
     img{
         position:absolute;

@@ -1,22 +1,22 @@
 <template>
 <div class="demo-6 loading">
+		<transition
+			appear
+			@before-enter="beforeEnter"
+			@enter="enter"
+			:css="false"
+		>
         <div class="content">
             <div class="content__drag-area">
-				<profile
-					v-for="(user,userIndex) in $page.users.edges"
-					:key="userIndex"
-					:image="user.node.imagen.url"
-				/>
+					<profile
+						v-for="(user,userIndex) in $page.users.edges"
+						:key="userIndex"
+						:image="user.node.imagen.url"
+					/>
             </div>
-			<transition
-				appear
-				@before-enter="beforeEnter"
-				@enter="enter"
-				:css="false"
-			>
 				<logo/>
-			</transition>
         </div>
+			</transition>
 </div>
 </template>
 
@@ -25,7 +25,8 @@ import '@/static/dragAnimation.js';
 import logo from '../ui/logo';
 import profile from '../ui/profile'
 
-import gsap from "gsap";
+import gsap from 'gsap'
+let masterTL= gsap.timeline()
 
 export default {
 	name: 'Header',
@@ -35,16 +36,18 @@ export default {
 	},
 	methods: {
 		beforeEnter(el) {
-			el.style.opacity=0
-			el.style.transform ='scale(0,0)'
+			el.style.transform='skewX(50deg) skewY(-20deg)'
+			// el.style.transform ='scale(0,0)'
 		},
-		enter(el, done){
+		enter(el){
 			gsap.to(el, {
-				duration:1,
+				duration:2,
 				opacity:1,
+				skewX:"0deg",
+				skewY:"0deg",
+				rotate:"0deg",
 				scale:1,
-				ease: 'bounce.out',
-				onComplete:done
+				ease: 'elastic',
 			})
 		}
 	},
@@ -104,6 +107,7 @@ export default {
 }
 
 .demo-6 {
+	position: sticky;
 	margin: 0;
 	--color-text: #000;
 	--color-link: #594343;
@@ -123,6 +127,7 @@ export default {
 	--color-link: #a17d66;
     --color-bg: #E9BEC8!important;
     --font-alt: bigmoore, serif;
+	overflow: hidden;
 }
 
 

@@ -1,9 +1,11 @@
 <template>
-    <div class="
+    <div
+        class="
         main-paint
-        row
-    ">
-            <div 
+        row"
+        :id="`odd-paint-${id}`"
+    >
+            <div
                 class="
                     meta
                     col-md-1
@@ -32,7 +34,7 @@
                     v-for="(foto, fotoIndex) in fotos"
                     :key="fotoIndex"
                     :src="`http://localhost:1337/${foto.url}`" 
-                    class="js-image"
+                    :class="`odd-paint-pic-${fotoIndex}`"
                     alt="Some image"
                 >
             </div>
@@ -56,18 +58,27 @@
                     {{fecha}}
                 </p>
         </div>
+        <observer
+            @intersect="intersected"
+            v-bind="options"
+        />
     </div>
 </template>
 
 <script>
+import observer from '@/components/utilities/observer';
 import Intersect from 'vue-intersect'
+
+import gsap from 'gsap'
+let masterTL= gsap.timeline()
 
 export default {
     name: 'OddPaint',
     components: {
-        Intersect
+        Intersect,
+        observer
     },
-    props: {
+    props:{
        titulo:String,
         cliente:String,
         Artista: [String, Object],
@@ -75,7 +86,60 @@ export default {
         fotos:[Object,Array],
         descripcion:String,
         categoria:Object,
-        Color:[String, Number]
+        Color:[String, Number],
+        id:[Number,String]
+    },
+    data() {
+        return {
+            options:{
+                   threshold:1,
+               }
+        }
+    }, 
+    methods: {
+        intersected() {
+            masterTL.add(this.paintsTL())
+            masterTL.add(this.metaTL())
+            masterTL.play()
+        },
+        metaTL() {
+            let tl = gsap.timeline()
+             tl.fromTo(`#odd-paint-${this.id} .meta`,1,{
+                opacity:0, 
+                scale:0, 
+                x:0, 
+            }, { 
+                opacity:1, 
+                scale:1, 
+                x:0, 
+                ease: 'circ',
+            },'<');
+        },
+        paintsTL() {
+            let tl = gsap.timeline()
+            tl.fromTo(`#odd-paint-${this.id} .odd-paint-pic-0`,1,{
+                x:300, 
+                y:200,
+                scale:.5,
+            }, { 
+                scale:1,
+                x:0,
+                y:0,
+                ease: 'slow',
+                zIndex:0,
+            },'<');
+
+            tl.fromTo(`#odd-paint-${this.id} .odd-paint-pic-1`,1,{
+               scale:2,
+                x:-270, 
+                y:-250,
+            }, {
+                scale:1,
+                x:0,
+                y:0,
+                ease: 'circ',
+            },'<');
+        },
     },
 };
 </script>
@@ -121,6 +185,9 @@ export default {
     flex-direction:row;
     justify-content:space-between;
     .meta{
+        left:200;
+        scale:0;
+        opacity:0;
         transform-origin: 0 0;
         transform: rotate(-90deg);
         white-space: nowrap;
