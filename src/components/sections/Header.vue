@@ -113,7 +113,7 @@ export default {
 	--color-link: #594343;
 	--color-link-hover: #000;
 	color: var(--color-text);
-	background-color: #E9BEC9;
+	background-color: #ffff00;
 	--font-main: Geneva, Tahoma, Verdana, sans-serif;
 	--font-alt: bigmoore, serif;
 	--font-weight-alt: 400;

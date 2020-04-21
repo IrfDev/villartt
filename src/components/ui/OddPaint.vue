@@ -112,7 +112,7 @@ export default {
                 opacity:1, 
                 scale:1, 
                 x:0, 
-                ease: 'circ',
+                ease: 'back',
             },'<');
         },
         paintsTL() {
@@ -125,7 +125,7 @@ export default {
                 scale:1,
                 x:0,
                 y:0,
-                ease: 'slow',
+                ease: 'circ',
                 zIndex:0,
             },'<');
 
@@ -137,7 +137,7 @@ export default {
                 scale:1,
                 x:0,
                 y:0,
-                ease: 'circ',
+                ease: 'slow',
             },'<');
         },
     },

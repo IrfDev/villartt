@@ -108,7 +108,7 @@ export default {
                 opacity:1, 
                 scale:1, 
                 x:0, 
-                ease: 'circ',
+                ease: 'back',
             },'<');
         },
         paintsTL() {

@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <headerr/>
+    <new-header/>
     <paints/>
     <categories/>
     <artists/>
@@ -67,7 +67,8 @@ query {
 </page-query>
 
 <script>
-import Headerr from '@/components/sections/Header.vue';
+import NewHeader from '@/components/sections/NewHeader.vue';
+// import Headerr from '@/components/sections/Header.vue';
 import paints from '@/components/sections/Paints.vue';
 import categories from '@/components/sections/paints/categories.vue';
 import Artists from '@/components/sections/Artists.vue';
@@ -77,7 +78,7 @@ export default {
     title: 'Inicio',
   },
   components: {
-    Headerr,
+    NewHeader,
     paints,
     categories,
     Artists,
