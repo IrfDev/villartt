@@ -24,14 +24,9 @@
         ">
           <p>
             {{descripcion}}.<br>
-                Vendido a 
-            <b
-                :style="`color: ${Color}`"
-            >
-                @{{cliente}}.<br>
-            </b>
+                Pintado
             <i>
-                {{fecha}}
+                {{fecha|fechaEnDias}}
             </i>
         </p>
         </div>
@@ -68,6 +63,8 @@ import observer from '@/components/utilities/observer';
 import gsap from 'gsap'
 let masterTL= gsap.timeline()
 
+import moment from 'moment'
+
 export default {
     name: 'EvenPaint',
     components: {
@@ -81,6 +78,11 @@ export default {
             }
         }
     }, 
+    filters: {
+        fechaEnDias(date) {
+            return moment(date).locale('es').fromNow()
+        }
+    },
     props: {
         titulo:String,
         cliente:String,

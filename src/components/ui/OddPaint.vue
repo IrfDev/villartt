@@ -47,16 +47,13 @@
                 text-center
                 text-md-left
             ">
-                <p>
-                    {{descripcion}}.
-                    Vendido a 
-                    <b
-                        :style="`color: ${Color}`"
-                    >
-                        @{{cliente}}.<br>
-                    </b>
-                    {{fecha}}
-                </p>
+            <p>
+                {{descripcion}}.<br>
+                Pintado
+                <i>
+                    {{fecha|fechaEnDias}}
+                </i>
+            </p>
         </div>
         <observer
             @intersect="intersected"
@@ -71,6 +68,8 @@ import Intersect from 'vue-intersect'
 
 import gsap from 'gsap'
 let masterTL= gsap.timeline()
+
+import moment from 'moment'
 
 export default {
     name: 'OddPaint',
@@ -96,6 +95,11 @@ export default {
                }
         }
     }, 
+    filters: {
+        fechaEnDias(date) {
+            return moment(date).locale('es').fromNow()
+        }
+    },
     methods: {
         intersected() {
             masterTL.add(this.paintsTL())
