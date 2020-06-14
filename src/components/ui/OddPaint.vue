@@ -14,7 +14,7 @@
                     order-2
                 "
             >
-                <h3 class="subtitle">~{{categoria.titulo}}</h3>
+                <h3 class="subtitle">~{{categorias.titulo}}</h3>
                 <h2
                     class="title"
                     :style="`color: ${Color}`"
@@ -33,7 +33,7 @@
                 <img 
                     v-for="(foto, fotoIndex) in fotos"
                     :key="fotoIndex"
-                    :src="`http://localhost:1337/${foto.url}`" 
+                    :src="`http://localhost:1337${foto.url}`" 
                     :class="`odd-paint-pic-${fotoIndex}`"
                     alt="Some image"
                 >
@@ -80,13 +80,12 @@ export default {
     props:{
        titulo:String,
         cliente:String,
-        Artista: [String, Object],
+        user: [String, Object],
         fecha:[Date, String],
         fotos:[Object,Array],
         descripcion:String,
-        categoria:Object,
+        categorias:Object,
         Color:[String, Number],
-        id:[Number,String]
     },
     data() {
         return {

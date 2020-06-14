@@ -12,18 +12,17 @@ query {
   pinturas:allStrapiPinturas{
   edges{
       node{
-        categoria{
+        categorias{
           titulo
           foto{
             url
           }
         }
-        id
         cliente
         Color
         titulo
         descripcion
-        Artista{
+        user{
           username
         }
         fecha
@@ -51,7 +50,7 @@ query {
       } 
     }
   }
-  users:allStrapiUsers (filter: { role: {name: {eq:"Villas"} }}){
+  users:allStrapiUsers{
     edges{
       node{
         username
@@ -75,7 +74,7 @@ import Artists from '@/components/sections/Artists.vue';
 
 export default {
   metaInfo: {
-    title: 'Inicio',
+    title: '👩🏻‍🎨 Inicio',
   },
   components: {
     NewHeader,

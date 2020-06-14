@@ -1,0 +1,22 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#cf9fbf",
+    "activityBar.activeBorder": "#f1f4ea",
+    "activityBar.background": "#cf9fbf",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#f1f4ea",
+    "activityBarBadge.foreground": "#15202b",
+    "statusBar.background": "#be7da9",
+    "statusBar.border": "#be7da9",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#ad5b92",
+    "titleBar.activeBackground": "#be7da9",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.border": "#be7da9",
+    "titleBar.inactiveBackground": "#be7da999",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#BE7DA9",
+  "window.title": "Villartt ❤️👩🏻‍🎨 ${activeEditorShort} 👩🏻‍🎨"
+}
