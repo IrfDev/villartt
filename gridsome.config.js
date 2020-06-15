@@ -9,7 +9,7 @@ module.exports = {
     plugins: [{
             use: '@gridsome/source-strapi',
             options: {
-                apiURL: 'http://localhost:1337',
+                apiURL: 'http://52.15.133.220:1337',
                 contentTypes: ['pinturas', 'categorias', 'users'],
             }
         },
