@@ -1,90 +1,98 @@
 <template>
-    <div
-        class="row m-0 align-items-center header"
-    >
-      <div class="col text-center">
-            Villartt
-            <h2>
-                Artistas de la Ciudad De México
-            </h2>
-      </div>
+  <div class="row m-0 align-items-center header">
+    <div class="col text-center">
+      <h1>
+        Villartt
+      </h1>
+      <h2>Artistas de la Ciudad De México</h2>
+    </div>
   </div>
 </template>
 
 <script>
-
 export default {
-    name: 'NewHeader',
+  name: 'NewHeader',
 };
 </script>
 
-<style lang='scss' scoped>
-.row{
-    height: 100vh;
+<style lang="scss" scoped>
+.row {
+  height: 100vh;
 }
-.row::after{
-    content:'';
-    animation-name:simpleImage;
-    animation-delay: 2s;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-    z-index:0;
+.row::after {
+  content: '';
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation-name: simpleImage;
+  // animation-delay: 0.01s;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  // animation-timing-function: ease-out;
+  z-index: 0;
 }
-h2{
-    font-size:5vw;
+h1 {
+  font-family: Rockness;
+  font-size: 1em;
+  color: var(--alfa-color-200);
 }
-.col{
-    font-weight: 700;
-    font-size: 25vw;
-    animation: super 5s ease-in forwards;
-    position:absolute;
-    white-space: nowrap;
-    background-clip: text;
-    color:transparent;
-    background-size:cover;
-    z-index: 1;
-    font-family: Sociere;
-    // color:white;
+h2 {
+  font-size: 5vw;
+  color: #fde3f1;
+  font-family: Open Sans;
+}
+.col {
+  font-weight: 700;
+  font-size: 25vw;
+  animation: super 2s forwards cubic-bezier(0.075, 0.82, 0.165, 1);
+  position: absolute;
+  white-space: nowrap;
+  background-clip: text;
+  color: transparent;
+  background-size: cover;
+  z-index: 1;
+  // color:white;
 }
 @keyframes super {
   0% {
-        background-image:url('http://localhost:1337/uploads/9a80eeb74e26475e89389db7ef3915b1.jpg');
-    }
+    background-image: url('https://admin.villartt.me/uploads/9a80eeb74e26475e89389db7ef3915b1.jpg');
+  }
   25% {
-      background-image:url('http://localhost:1337//uploads/aa1839ec0e884918a74e39c281e49412.jpg');
-    }
+    background-image: url('https://admin.villartt.me//uploads/aa1839ec0e884918a74e39c281e49412.jpg');
+  }
   50% {
-        background-image:url('http://localhost:1337/uploads/9a80eeb74e26475e89389db7ef3915b1.jpg');
-    }
+    background-image: url('https://admin.villartt.me/uploads/9a80eeb74e26475e89389db7ef3915b1.jpg');
+  }
   75% {
-      color:transparent;
-        background-image:url('../../../static/header-bg.jpg');
-    //   background-image:url('http://localhost:1337//uploads/aa1839ec0e884918a74e39c281e49412.jpg');
-    }
-    // 80%{
-    // }
+    color: transparent;
+    background-image: url('../../../static/header-bg.jpg');
+  }
   100% {
-    background-position:center;
+    background-position: center;
+    background-size: cover;
     filter: blur(0px);
-    color:white;
+    color: white;
     font-size: 27vw;
-    //   background:filter(blur(22px))
-      }
+  }
 }
 @keyframes simpleImage {
-    from{
-        background-image: none;
-        height: 0vh;
-        width: 100vw;
-    }
-    to{
-        filter: blur(6px) grayscale(40%);
-        height: 100vh;
-        width: 100vw;
-        opacity:1;
-        background-attachment: fixed;
-        background-image:url('../../../static/header-bg.jpg');
-    }
+  from {
+    filter: blur(80px) grayscale(100%);
+    background-image: none;
+    height: 0vh;
+    width: 100vw;
+  }
+  to {
+    filter: none;
+    height: 100vh;
+    width: 100vw;
+    opacity: 1;
+    background-size: cover;
+    background-attachment: fixed;
+    background: radial-gradient(
+        57.16% 87.39% at 49.64% 49.45%,
+        rgba(0, 0, 0, 0.31) 0%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url('../../../static/header-bg.jpg');
+  }
 }
 </style>
