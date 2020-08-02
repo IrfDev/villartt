@@ -53,23 +53,9 @@ h2 {
 }
 @keyframes super {
   0% {
-    background-image: url('https://admin.villartt.me/uploads/9a80eeb74e26475e89389db7ef3915b1.jpg');
-  }
-  25% {
-    background-image: url('https://admin.villartt.me//uploads/aa1839ec0e884918a74e39c281e49412.jpg');
-  }
-  50% {
-    background-image: url('https://admin.villartt.me/uploads/9a80eeb74e26475e89389db7ef3915b1.jpg');
-  }
-  75% {
-    color: transparent;
-    background-image: url('../../../static/header-bg.jpg');
+    font-size: 10vw;
   }
   100% {
-    background-position: center;
-    background-size: cover;
-    filter: blur(0px);
-    color: white;
     font-size: 27vw;
   }
 }

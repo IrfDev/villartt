@@ -1,13 +1,13 @@
 <template>
-  <div
-    class="observer"
-  />
+  <div class="observer">
+    <slot />
+  </div>
 </template>
 
 <script>
 export default {
   name: 'observer',
-  props: ['options', 'id'],
+  props: 'options',
   data: () => ({
     observer: null,
   }),
@@ -15,7 +15,7 @@ export default {
     const options = this.options || {};
     this.observer = new IntersectionObserver(([entry]) => {
       if (entry && entry.isIntersecting) {
-        this.$emit("intersect");
+        this.$emit('intersect');
       }
     }, options);
     this.observer.observe(this.$el);

@@ -81,7 +81,22 @@ export default {
   }
 }
 
-@keyframes identifier {
+.instagram-foto {
+  background-size: cover !important;
+  flex-basis: 18%;
+  margin-left: -3%;
+
+  min-height: 13em;
+  width: 100%;
+  border-radius: 7px;
+  z-index: initial;
+}
+.instagram-foto:nth-of-type(even) {
+  transform: rotate(7deg);
+}
+
+.instagram-foto:nth-of-type(odd) {
+  transform: rotate(-7deg);
 }
 
 @keyframes goDown {
@@ -159,23 +174,5 @@ export default {
     cursor: pointer;
     border-radius: 7px;
   }
-}
-
-.instagram-foto {
-  background-size: cover !important;
-  flex-basis: 18%;
-  margin-left: -3%;
-
-  min-height: 13em;
-  width: 100%;
-  border-radius: 7px;
-  z-index: initial;
-}
-.instagram-foto:nth-of-type(even) {
-  transform: rotate(7deg);
-}
-
-.instagram-foto:nth-of-type(odd) {
-  transform: rotate(-7deg);
 }
 </style>
