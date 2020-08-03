@@ -3,7 +3,7 @@
     @mouseenter="hoverRow = true"
     class="row align-items-stretch d-flex instagram-horizontal justify-content-center m-0 mt-5 mb-5"
   >
-    <div class="col-12">
+    <div class="col-12 text-center">
       <h2>Instagram</h2>
     </div>
     <div
@@ -18,13 +18,12 @@
               text
       }-->
     </div>
-    <div v-if="hoverRow" class="col-6 mt-5 pb-5 text-center cta-instagram">
+    <div
+      v-if="hoverRow"
+      class="col-10 col-lg-5 mt-5 pb-5 text-center cta-instagram justify-content-center"
+    >
       <a href="https://www.instagram.com/vill.artt/" target="_blank">
-        <img
-          class="img-fluid w-25"
-          src="../../static/instagram-logo.png"
-          alt="instagram-logo"
-        />
+        <img class="img-flui" src="../../static/instagram-logo.png" alt="instagram-logo" />
       </a>
     </div>
   </div>
@@ -53,9 +52,9 @@ export default {
 .instagram-horizontal:hover {
   .instagram-foto {
     transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    margin: 0 0.5em;
+    margin: 0.5em 0.5em;
     transform: none;
-    flex-basis: 15%;
+    flex-basis: 43%;
   }
 }
 .cta-instagram {
@@ -63,6 +62,7 @@ export default {
   a {
     img {
       box-shadow: none !important;
+      width: 100%;
     }
     position: relative;
     background: linear-gradient(
@@ -75,15 +75,15 @@ export default {
       #fd1d1d
     );
     color: white;
-    padding: 2% 10%;
-    font-size: 1.5em;
+    padding: 8% 15%;
+
     animation: goDown 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
   }
 }
 
 .instagram-foto {
   background-size: cover !important;
-  flex-basis: 18%;
+  flex-basis: 40%;
   margin-left: -3%;
 
   min-height: 13em;
@@ -97,6 +97,63 @@ export default {
 
 .instagram-foto:nth-of-type(odd) {
   transform: rotate(-7deg);
+}
+@media screen and (min-width: 768px) {
+  .instagram-horizontal div {
+    height: 100%;
+  }
+  .instagram-horizontal .instagram-foto {
+    transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .instagram-horizontal:hover {
+    .instagram-foto {
+      transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      margin: 0 0.5em;
+      transform: none;
+      flex-basis: 15%;
+    }
+  }
+  .cta-instagram {
+    height: 100%;
+    a {
+      img {
+        box-shadow: none !important;
+      }
+      position: relative;
+      background: linear-gradient(
+        50deg,
+        #405de6,
+        #5851db,
+        #833ab4,
+        #c13584,
+        #e1306c,
+        #fd1d1d
+      );
+      color: white;
+      padding: 5% 10%;
+      font-size: 1.5em;
+      animation: goDown 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    }
+  }
+
+  .instagram-foto {
+    background-size: cover !important;
+    flex-basis: 18%;
+    margin-left: -3%;
+
+    min-height: 13em;
+    width: 100%;
+    border-radius: 7px;
+    z-index: initial;
+  }
+  .instagram-foto:nth-of-type(even) {
+    transform: rotate(7deg);
+  }
+
+  .instagram-foto:nth-of-type(odd) {
+    transform: rotate(-7deg);
+  }
 }
 
 @keyframes goDown {

@@ -29,6 +29,7 @@ query {
   pinturas:allStrapiPinturas{
   edges{
       node{
+        feature:Destacada
         categorias{
           titulo
           foto{
@@ -109,7 +110,80 @@ export default {
   --alfa-color: #e50092;
   --alfa-color-200: #fcd9ed;
   --box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.3), 0px 4px 20px #f684c4;
+
+  // --base-font-size: 0.43em;
+  // --type-scale: 1.5;
+
+  // --scale-ctas: 2;
+  // --paragraphs: calc((var(--base-font-size) * 1.3) * var(--type-scale));
+  // --ctas: calc((var(--base-font-size) * var(--scale-ctas)) * var(--type-scale));
+  // --h5: calc(var(--base-font-size) * var(--type-scale));
+  // --h4: calc(var(--h5) * var(--type-scale));
+  // --h3: calc(var(--h4) * var(--type-scale));
+  // --h2: calc(var(--h3) * var(--type-scale));
+  // --h1: calc(var(--h2) * var(--type-scale));
 }
+/* 
+.typo-font-size {
+  font-size: calc((var(--base-font-size) * 4) * var(--type-scale));
+}
+
+.typo-font-size.title {
+  font-size: calc((var(--base-font-size) * 6) * var(--type-scale));
+}
+.typo-font-size.title.wingie {
+  font-size: calc((var(--base-font-size) * 7.5) * var(--type-scale));
+}
+
+p {
+  font-size: var(--paragraphs);
+}
+button {
+  font-size: var(--ctas);
+}
+
+h1 {
+  margin-top: 0;
+  font-size: var(--h1);
+}
+
+h2 {
+  font-size: var(--h2);
+}
+
+h3 {
+  font-size: var(--h3);
+}
+
+h4 {
+  font-size: var(--h4);
+}
+
+h5 {
+  font-size: var(--h5);
+}
+
+@media (min-width: 480px) {
+  :root {
+    --base-font-size: 4em;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --base-font-size: 0.7em;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --base-font-size: 1em;
+    --scale-ctas: 1.7;
+  }
+  .typo-font-size {
+    font-size: calc((var(--base-font-size) * 3) * var(--type-scale));
+  }
+} */
 
 h2 {
   font-family: Rockness;

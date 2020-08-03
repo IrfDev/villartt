@@ -3,13 +3,9 @@
     <div class="col-12">
       <h2 class="text-center">Artistas</h2>
     </div>
-    <div
-      class="col-md-4 col-12"
-      v-for="(villi, villiIndex) in $page.users.edges"
-      :key="villiIndex"
-    >
+    <div class="col-md-4 col-12" v-for="(villi, villiIndex) in $page.users.edges" :key="villiIndex">
       <div
-        class="card border-0 d-flex justify-content-around"
+        class="card border-0 d-flex justify-content-around align-items-center"
         :class="{
           'flex-row': villiIndex % 2 === 0,
           'flex-row-reverse': villiIndex % 2 !== 0,
@@ -45,15 +41,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 768px) {
-  h1 {
-    font-size: 4em !important;
-  }
-  p {
-    font-size: 1em !important;
-  }
-}
-
 .circle {
   width: 200px;
   height: 200px;
@@ -61,10 +48,13 @@ export default {
   background-repeat: no-repeat;
   border-radius: 50%;
 }
-h1 {
-  font-family: Montserrat;
+
+.info {
+  max-width: 12em;
+}
+
+h2 {
   font-size: 7em;
-  font-weight: bolder;
   margin: 10vh 0;
   transform: rotate(180deg);
   // text-decoration: underline;
@@ -77,5 +67,25 @@ h3 {
   font-family: Montserrat;
   font-size: 3em;
   font-weight: 600;
+}
+h1 {
+  font-size: 4em !important;
+}
+p {
+  font-size: 1em !important;
+}
+@media screen and (min-width: 768px) {
+  h2 {
+    font-size: 7em;
+    margin: 10vh 0;
+    transform: rotate(180deg);
+    // text-decoration: underline;
+  }
+  p {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 3em;
+  }
 }
 </style>

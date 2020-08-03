@@ -1,12 +1,12 @@
 <template>
   <div class="mt-5 mb-5">
     <h2 class="text-center cat">Categorias</h2>
-    <div class="row align-center text-center">
+    <div class="row align-center text-center align-items-stretch">
       <observer @intersect="intersected" v-bind="options" :id="'categories'" />
       <div
         v-for="categoria in $page.categorias.edges"
         :key="categoria.id"
-        class="category col mt-3 mb-3 align-self-stretch"
+        class="category col mt-lg-3 mb-md-3 align-items-stretch"
         @click="activeCategory(categoria.node)"
       >
         <h5>{{ categoria.node.titulo }}</h5>
@@ -68,7 +68,7 @@ export default {
         opacity: 0,
         scale: 0,
         y: 150,
-        ease: 'power1',
+        ease: 'ease-in',
         stagger: {
           each: 0.3,
           from: 'center',
@@ -119,32 +119,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 768px) {
-  .title {
-    font-size: 2em !important;
-  }
-  h3 {
-    font-size: 3em !important;
-  }
-  h5 {
-    font-size: 1em !important;
-  }
-  .active {
-    padding: 30% 10% !important;
-  }
-}
-// .cat{
-//     text-decoration: underline;
-// }
-.title {
-  font-size: 4em;
-  font-weight: 400;
-}
-p {
-  font-family: 'Courier New', Courier, monospace;
-}
 .category-wrapper {
-  padding: 70% 10%;
+  padding: 6em 20%;
   border-radius: 8px;
   background-attachment: fixed;
   background-size: cover;
@@ -152,26 +128,54 @@ p {
   box-shadow: var(--box-shadow);
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.active {
-  padding: 20% 10%;
-  transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+.title {
+  font-size: 2em !important;
 }
 h3 {
-  font-family: Montserrat;
-  font-size: 5em;
-  color: 333;
-  font-weight: bolder;
+  font-size: 3em !important;
 }
 h5 {
-  font-family: 'Courier New';
-  font-size: 2em;
+  font-size: 1em !important;
 }
-.row {
-  margin: 0;
-  text-align: center;
+.active {
+  padding: 20% 10% !important;
 }
-img {
-  border-radius: 8px;
-  box-shadow: 5px 4px 30px rgba(0, 0, 0, 0.104);
+p,
+h5 {
+  font-family: 'Courier New', Courier, monospace;
 }
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 4em;
+    font-weight: 400;
+  }
+  .category-wrapper {
+    padding: 70% 40%;
+  }
+  .active {
+    padding: 30% 10%;
+    transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  h3 {
+    font-family: Montserrat;
+    font-size: 5em;
+    color: 333;
+    font-weight: bolder;
+  }
+  h5 {
+    font-family: 'Courier New';
+    font-size: 2em;
+  }
+  .row {
+    margin: 0;
+    text-align: center;
+  }
+  img {
+    border-radius: 8px;
+    box-shadow: 5px 4px 30px rgba(0, 0, 0, 0.104);
+  }
+}
+// .cat{
+//     text-decoration: underline;
+// }
 </style>
