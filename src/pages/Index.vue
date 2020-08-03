@@ -5,6 +5,7 @@
     <categories class="mt-5" />
     <instagram-horizontal />
     <artists />
+    <the-footer />
   </Layout>
 </template>
 
@@ -90,6 +91,7 @@ import paints from '@/components/sections/Paints.vue';
 import categories from '@/components/sections/paints/categories.vue';
 import Artists from '@/components/sections/Artists.vue';
 import InstagramHorizontal from '@/components/sections/InstagramHorizontal.vue';
+import TheFooter from '@/components/sections/TheFooter.vue';
 
 export default {
   metaInfo: {
@@ -101,6 +103,7 @@ export default {
     categories,
     InstagramHorizontal,
     Artists,
+    TheFooter,
   },
 };
 </script>
