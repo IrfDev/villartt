@@ -1,10 +1,8 @@
 <template>
-  <div class="row m-0 align-items-center header">
+  <div class="row m-0 align-items-center header title">
     <div class="col text-center">
-      <h1>
-        Villartt
-      </h1>
-      <h2>Artistas de la Ciudad De México</h2>
+      <h1 class="typo-font-size">Villartt</h1>
+      <h2 class="typo-subtitle">Artistas de la Ciudad De México</h2>
     </div>
   </div>
 </template>
@@ -31,32 +29,26 @@ export default {
 }
 h1 {
   font-family: Rockness;
-  font-size: 1em;
   color: var(--alfa-color-200);
 }
 h2 {
-  font-size: 5vw;
-  color: #fde3f1;
-  font-family: Open Sans;
+  color: #fefbfd;
 }
 .col {
   font-weight: 700;
-  font-size: 25vw;
   animation: super 2s forwards cubic-bezier(0.075, 0.82, 0.165, 1);
   position: absolute;
-  white-space: nowrap;
   background-clip: text;
   color: transparent;
   background-size: cover;
   z-index: 1;
-  // color:white;
 }
 @keyframes super {
   0% {
-    font-size: 10vw;
+    font-size: 60%;
   }
   100% {
-    font-size: 27vw;
+    font-size: 100%;
   }
 }
 @keyframes simpleImage {

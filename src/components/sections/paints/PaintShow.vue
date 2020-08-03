@@ -1,5 +1,5 @@
 <template>
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div :id="`carouselControls-${titulo}`" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div
         v-for="(foto, fotoIndex) in fotos"
@@ -12,7 +12,7 @@
     </div>
     <a
       class="carousel-control-prev"
-      href="#carouselExampleControls"
+      :href="`#carouselControls-${titulo}`"
       role="button"
       data-slide="prev"
       v-if="activeItem >= 1"
@@ -24,7 +24,7 @@
     <a
       v-if="activeItem <1"
       class="carousel-control-next"
-      href="#carouselExampleControls"
+      :href="`#carouselControls-${titulo}`"
       role="button"
       @click="activeItem ++"
       data-slide="next"
@@ -41,6 +41,7 @@ export default {
 
   props: {
     fotos: Array,
+    titulo: String,
   },
 
   data() {

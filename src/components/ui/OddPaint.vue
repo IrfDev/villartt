@@ -1,28 +1,28 @@
 <template>
-  <div class="main-paint row d-flex m-0" :id="`odd-paint-${user.username}`">
+  <div class="main-paint row d-flex m-0 justify-content-center" :id="`odd-paint-${user.username}`">
     <div class="meta col-md-1 col-12 order-md-1 order-2">
-      <h3 class="subtitle">
+      <h4 class="subtitle">
         ~ Pintada por
         <span class="artist-name">{{ user.username }}</span>
         👩🏻‍🎨
-      </h3>
+      </h4>
       <h2 class="title">-{{ titulo }}</h2>
     </div>
-    <div class="paint order-md-2 order-1 col-md-10 col-12">
+    <div class="paint order-md-2 order-1 col-md-11 col-11 d-flex">
+      <observer @intersect="intersected" v-bind="options" />
       <img
         v-for="(foto, fotoIndex) in fotos"
         :key="fotoIndex"
-        class="d-none d-lg-flex img-fluid"
+        class="d-none d-lg-block img-fluid"
         :src="`https://admin.villartt.me${foto.url}`"
         :class="`odd-paint-pic-${fotoIndex}`"
         :alt="`Villartt pintura ${titulo}`"
       />
-      <paint-show :fotos="fotos" class="align-self-center d-lg-none d-flex" />
-      <observer @intersect="intersected" v-bind="options" />
+      <paint-show :titulo="titulo" :fotos="fotos" class="align-self-center d-lg-none d-flex" />
     </div>
-    <div class="text col-12 col-lg-1 order-3 text-center text-md-right">
+    <!-- <div class="text col-12 col-lg-1 order-3 text-center text-md-right">
       <p>{{ descripcion }}.</p>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -64,12 +64,6 @@ export default {
     };
   },
 
-  filters: {
-    fechaEnDias(date) {
-      return moment(date).locale('es').fromNow();
-    },
-  },
-
   methods: {
     intersected() {
       masterTL.add(this.paintsTL());
@@ -83,16 +77,12 @@ export default {
         `#odd-paint-${this.user.username} .odd-paint-pic-0`,
         0.7,
         {
-          x: -10,
-          y: -20,
           opacity: 1,
           filter: 'blur(5px)',
         },
         {
           filter: 'blur(0px)',
           opacity: 1,
-          x: 0,
-          y: 0,
           zIndex: 0,
           ease: 'circ',
         },
@@ -126,19 +116,51 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main-paint {
+  .meta {
+    top: 10% !important;
+    .title {
+      font-family: Montserrat;
+      color: #e3dde1;
+      font-weight: 800;
+      font-size: calc(var(--base-font-size) * 0.8);
+    }
+    .subtitle {
+      font-family: 'Courier New';
+      color: #f684c4;
+      font-size: calc(var(--base-font-size) * 0.3);
+      .artist-name {
+        font-weight: 300;
+
+        color: var(--alfa-color);
+      }
+    }
+  }
+
+  .text p {
+    font-family: 'Courier New';
+    font-size: 1.3em;
+    text-align: center;
+    white-space: swrap;
+    // line-break: strict;
+    color: #f9aed8;
+  }
+}
+
 @media screen and (min-width: 900px) {
   .main-paint {
-    margin-top: 35vh !important;
-    margin-bottom: 40vh !important;
+    margin-top: 5vw !important;
+    margin-bottom: 7vw !important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     .meta {
-      transform-origin: 20% 1%;
+      // transform-origin: 90% 42%;
       transform: rotate(-90deg);
-      margin-top: 10em;
+      margin-top: 20em;
+
       white-space: nowrap;
-      top: 10em;
+
       .subtitle {
         font-family: 'Courier New';
         color: #f684c4;
@@ -167,52 +189,20 @@ export default {
     }
 
     img {
-      position: absolute;
-      width: 100%;
+      position: relative;
       border-radius: 8px;
+      max-height: 100%;
+      max-width: 48vw;
     }
 
     img:nth-of-type(1) {
-      bottom: 40%;
-      max-width: 45vw;
+      bottom: 5em;
     }
 
     img:nth-of-type(2) {
-      max-width: 45vw;
-      bottom: 0%;
-      right: 0;
-      left: 46%;
+      right: 5em;
+      top: 0em;
     }
-  }
-}
-.main-paint {
-  margin-top: 20vh;
-  margin-bottom: 10vh;
-  .meta {
-    top: 10% !important;
-    .title {
-      font-family: Montserrat;
-      color: #e3dde1;
-      font-weight: 800;
-      font-size: 3em;
-    }
-    .subtitle {
-      font-family: 'Courier New';
-      color: #f684c4;
-      .artist-name {
-        font-weight: 300;
-        color: var(--alfa-color);
-      }
-    }
-  }
-
-  .text p {
-    font-family: 'Courier New';
-    font-size: 1.3em;
-    text-align: center;
-    white-space: swrap;
-    // line-break: strict;
-    color: #f9aed8;
   }
 }
 </style>

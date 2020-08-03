@@ -132,7 +132,7 @@ export default {
       );
       color: white;
       padding: 5% 10%;
-      font-size: 1.5em;
+
       animation: goDown 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
     }
   }

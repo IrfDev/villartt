@@ -1,8 +1,8 @@
 <template>
   <Layout>
     <new-header />
-    <paints />
-    <categories />
+    <paints class="mt-5 mb-5" />
+    <categories class="mt-5" />
     <instagram-horizontal />
     <artists />
   </Layout>
@@ -111,21 +111,26 @@ export default {
   --alfa-color-200: #fcd9ed;
   --box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.3), 0px 4px 20px #f684c4;
 
-  // --base-font-size: 0.43em;
-  // --type-scale: 1.5;
+  --base-font-size: 2em;
+  --type-scale: 1.15;
 
-  // --scale-ctas: 2;
-  // --paragraphs: calc((var(--base-font-size) * 1.3) * var(--type-scale));
-  // --ctas: calc((var(--base-font-size) * var(--scale-ctas)) * var(--type-scale));
-  // --h5: calc(var(--base-font-size) * var(--type-scale));
-  // --h4: calc(var(--h5) * var(--type-scale));
-  // --h3: calc(var(--h4) * var(--type-scale));
-  // --h2: calc(var(--h3) * var(--type-scale));
-  // --h1: calc(var(--h2) * var(--type-scale));
+  --scale-ctas: 2;
+  --paragraphs: calc((var(--base-font-size) * 1.3) * var(--type-scale));
+  --ctas: calc((var(--base-font-size) * var(--scale-ctas)) * var(--type-scale));
+  --h5: calc(var(--base-font-size) * var(--type-scale));
+  --h4: calc(var(--h5) * var(--type-scale));
+  --h3: calc(var(--h4) * var(--type-scale));
+  --h2: calc(var(--h3) * var(--type-scale));
+  --h1: calc(var(--h2) * var(--type-scale));
 }
-/* 
+
 .typo-font-size {
-  font-size: calc((var(--base-font-size) * 4) * var(--type-scale));
+  font-size: calc(var(--base-font-size) * 6) !important;
+}
+
+.typo-subtitle {
+  font-size: calc(var(--base-font-size) * 0.6) !important;
+  font-family: Montserrat !important;
 }
 
 .typo-font-size.title {
@@ -165,29 +170,25 @@ h5 {
 
 @media (min-width: 480px) {
   :root {
-    --base-font-size: 4em;
+    --base-font-size: 4.5em;
   }
 }
 
 @media (min-width: 768px) {
   :root {
-    --base-font-size: 0.7em;
+    --base-font-size: 4.5em;
   }
 }
 
 @media (min-width: 1200px) {
   :root {
-    --base-font-size: 1em;
+    --base-font-size: 4.8em;
     --scale-ctas: 1.7;
   }
-  .typo-font-size {
-    font-size: calc((var(--base-font-size) * 3) * var(--type-scale));
-  }
-} */
+}
 
 h2 {
   font-family: Rockness;
-  font-size: 10em;
   color: var(--alfa-color);
   text-align: center;
 }

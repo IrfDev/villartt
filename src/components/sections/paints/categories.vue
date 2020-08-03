@@ -1,7 +1,7 @@
 <template>
   <div class="mt-5 mb-5">
     <h2 class="text-center cat">Categorias</h2>
-    <div class="row align-center text-center align-items-stretch">
+    <div class="row align-center text-center align-items-stretch m-0">
       <observer @intersect="intersected" v-bind="options" :id="'categories'" />
       <div
         v-for="categoria in $page.categorias.edges"

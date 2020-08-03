@@ -54,18 +54,15 @@ export default {
 }
 
 h2 {
-  font-size: 7em;
   margin: 10vh 0;
   transform: rotate(180deg);
   // text-decoration: underline;
 }
 p {
   font-family: 'Courier New';
-  font-size: 2em;
 }
 h3 {
   font-family: Montserrat;
-  font-size: 3em;
   font-weight: 600;
 }
 h1 {

@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "paint",
+  name: 'paint',
   props: {
     titulo: String,
     cliente: String,
@@ -36,17 +36,15 @@ export default {
       filter: blur(2px) invert(100%) !important;
     }
     .card-title {
-      font-size: 0.8em !important;
     }
     p {
-      font-size: 0.6em !important;
     }
   }
 }
 p {
   transition: 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   opacity: 0;
-  font-family: "Courier New";
+  font-family: 'Courier New';
   font-size: 0em;
 }
 .card {

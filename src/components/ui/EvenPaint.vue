@@ -1,27 +1,27 @@
 <template>
-  <div class="mt-3 main-paint row d-flex m-0">
-    <div class="text col-md-1 col-12 order-md-1 order-3 text-center text-md-left align-self-end">
+  <div class="mt-3 main-paint mt-5 row d-flex m-0 justify-content-center">
+    <!-- <div class="text col-md-1 col-12 order-md-1 order-3 text-center text-md-left align-self-end">
       <p>{{ descripcion }}</p>
-    </div>
+    </div>-->
     <observer @intersect="intersected" v-bind="options" />
-    <div class="paint order-md-2 order-2 col-md-10 col-12 justify-content-center">
+    <div class="paint order-md-1 order-2 col-md-11 col-11 justify-content-center d-flex">
       <img
         v-for="(foto, fotoIndex) in fotos"
         :key="fotoIndex"
         :src="`https://admin.villartt.me${foto.url}`"
-        class="img-fluid d-none d-lg-flex"
+        class="img-fluid d-none d-lg-block"
         :id="`even-paint-pic-${fotoIndex}`"
         :alt="`Villartt pintura ${titulo}`"
       />
-      <paint-show :fotos="fotos" class="align-self-center d-lg-none d-flex" />
+      <paint-show :titulo="titulo" :fotos="fotos" class="align-self-center d-lg-none d-flex" />
     </div>
-    <div class="meta col-md-1 col-12 order-md-3 order-1 d-flex flex-column">
+    <div class="meta col-md-1 col-12 order-md-2 order-1 d-flex flex-column">
       <h3 class="subtitle order-2 order-md-1">
         ~Pintada por
         <span class="artist-name">{{ user.username }}</span>
         👩🏻‍🎨
       </h3>
-      <h2 class="title order-md-2 order-1">-{{ titulo }}</h2>
+      <h2 class="title order-md-2 order-1">-Obelix</h2>
     </div>
   </div>
 </template>
@@ -114,7 +114,6 @@ export default {
           opacity: 1,
           filter: 'grayscale(0%)',
           scale: 1,
-
           x: 0,
           y: 0,
 
@@ -161,7 +160,6 @@ export default {
   font-family: 'Courier New';
   text-align: unset;
   transform: unset;
-
   color: #f9aed8;
   width: 100%;
   white-space: wrap;
@@ -170,28 +168,28 @@ export default {
   .meta {
     transform-origin: unset;
     .title {
-      font-size: 2.5em !important;
       text-align: center;
+      font-size: calc(var(--base-font-size) * 0.8);
     }
     .subtitle {
-      font-size: 1em !important;
+      font-size: calc(var(--base-font-size) * 0.3);
     }
   }
 }
 
 @media screen and (min-width: 768px) {
   img {
-    max-width: 65vh;
+    max-width: 48vw;
   }
   .main-paint {
-    margin: 20vh 0vh !important;
+    margin-bottom: 7vw !important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     .meta {
       transform-origin: 0 0;
       transform: rotate(90deg);
-      margin-top: -25em;
+      margin-top: -1em;
       white-space: nowrap;
       right: -7%;
       // bottom: -100px;
@@ -207,39 +205,30 @@ export default {
         color: #e3dde1;
         font-family: Montserrat;
         font-weight: 800;
-        font-size: 3em;
       }
-    }
-    .text p {
-      font-family: 'Courier New';
-      text-align: left;
-      transform: rotate(-90deg);
-      font-size: 1.3em;
-      color: #f9aed8;
-      width: 30em;
-      transform-origin: 10% 120%;
-      white-space: wrap;
     }
   }
   img {
-    position: absolute;
+    position: relative;
     border-radius: 8px;
+    max-height: 100%;
+    // max-width: 50vw;
   }
 
   img:nth-of-type(1) {
-    bottom: 50%;
+    top: 4em;
+    left: 2em;
   }
 
   img:nth-of-type(2) {
-    bottom: -150%;
-    right: 0;
-    left: 46%;
+    // bottom: 1em;
+    right: 3.3em;
   }
 }
 
 @media screen and (min-width: 1210px) {
   img {
-    max-width: 80vh;
+    // max-width: 85vw;
   }
 }
 </style>
