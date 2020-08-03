@@ -70,14 +70,14 @@ img {
     opacity: 0.5;
   }
   .card-title {
-    font-size: 1.5em;
+    font-size: 1em;
     opacity: 1;
     transition: 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   }
   p {
     transition: 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     opacity: 1;
-    font-size: 1em;
+    font-size: 0.5em;
   }
 }
 </style>

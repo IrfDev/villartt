@@ -1,12 +1,12 @@
 <template>
   <div class="mt-5 mb-5">
+    <observer @intersect="intersected" v-bind="options" :id="'categories'" />
     <h2 class="text-center cat">Categorias</h2>
-    <div class="row align-center text-center align-items-stretch m-0">
-      <observer @intersect="intersected" v-bind="options" :id="'categories'" />
+    <div class="row category-row text-center justify-content-lg-center align-items-stretch m-0">
       <div
         v-for="categoria in $page.categorias.edges"
         :key="categoria.id"
-        class="category col mt-lg-3 mb-md-3 align-items-stretch"
+        class="category col-5 mt-lg-3 mb-md-3"
         @click="activeCategory(categoria.node)"
       >
         <h5>{{ categoria.node.titulo }}</h5>
@@ -57,21 +57,23 @@ export default {
       categoryTitle: '',
       categoryDescription: '',
       options: {
-        rootMargin: [0.25],
+        // rootMargin: [0.25],
       },
     };
   },
   methods: {
     intersected() {
       TweenMax.from('.category', {
-        duration: 1,
+        duration: 0.3,
         opacity: 0,
-        scale: 0,
-        y: 150,
-        ease: 'ease-in',
+        filter: 'blur(10px) grayscale(100%)',
+        scale: 0.6,
+        y: 50,
+        x: -10,
+        ease: 'back',
         stagger: {
           each: 0.3,
-          from: 'center',
+          from: 'random',
         },
       });
     },
@@ -81,6 +83,7 @@ export default {
           duration: 0.5,
           opacity: 0,
           scale: 0.1,
+          filter: 'blur(7px)',
           y: 100,
           ease: 'power1',
           stagger: {
@@ -119,34 +122,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.category-row {
+  padding-bottom: 3em;
+  overflow-x: auto;
+  overflow-y: auto;
+  flex-flow: row nowrap;
+}
 .category-wrapper {
-  padding: 6em 20%;
+  padding: 8em 0%;
   border-radius: 8px;
   background-attachment: fixed;
   background-size: cover;
   background-position: top;
   box-shadow: var(--box-shadow);
-  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: 5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .title {
   font-size: 2em !important;
 }
 h3 {
-  font-size: 3em !important;
 }
 h5 {
-  font-size: 1em !important;
 }
 .active {
-  padding: 20% 10% !important;
+  padding: 50% 10% !important;
 }
 p,
 h5 {
   font-family: 'Courier New', Courier, monospace;
 }
 @media screen and (min-width: 768px) {
+  .category-row .category {
+    flex-basis: 20%;
+    margin: 0 1em;
+  }
   .title {
-    font-size: 4em;
     font-weight: 400;
   }
   .category-wrapper {
@@ -157,12 +167,12 @@ h5 {
     transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
   h3 {
-    font-family: Montserrat;
-    font-size: 5em;
     color: 333;
     font-weight: bolder;
   }
-  h5 {
+  h5,
+  p,
+  h3 {
     font-family: 'Courier New';
     font-size: 2em;
   }

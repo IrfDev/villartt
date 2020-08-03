@@ -1,10 +1,7 @@
 <template>
   <div class="mt-3 main-paint mt-5 row d-flex m-0 justify-content-center">
-    <!-- <div class="text col-md-1 col-12 order-md-1 order-3 text-center text-md-left align-self-end">
-      <p>{{ descripcion }}</p>
-    </div>-->
     <observer @intersect="intersected" v-bind="options" />
-    <div class="paint order-md-1 order-2 col-md-11 col-11 justify-content-center d-flex">
+    <div class="paint order-md-1 order-1 col-md-11 col-11 justify-content-center d-flex">
       <img
         v-for="(foto, fotoIndex) in fotos"
         :key="fotoIndex"
@@ -15,8 +12,8 @@
       />
       <paint-show :titulo="titulo" :fotos="fotos" class="align-self-center d-lg-none d-flex" />
     </div>
-    <div class="meta col-md-1 col-12 order-md-2 order-1 d-flex flex-column">
-      <h3 class="subtitle order-2 order-md-1">
+    <div class="meta mt-4 mt-lg-0 col-md-1 col-12 order-md-2 order-2 d-flex flex-column">
+      <h3 class="subtitle">
         ~Pintada por
         <span class="artist-name">{{ user.username }}</span>
         👩🏻‍🎨
@@ -84,8 +81,6 @@ export default {
         ` #even-paint-pic-0`,
         0.5,
         {
-          x: -10,
-          y: -20,
           opacity: 0.9,
           filter: 'blur(5px)',
         },
@@ -105,18 +100,15 @@ export default {
         0.8,
         {
           scale: 1.05,
-          x: -12,
-          y: 40,
           opacity: 0.9,
-          filter: 'grayscale(100%)',
+          filter: 'grayscale(100%) blur(7px)',
         },
         {
           opacity: 1,
-          filter: 'grayscale(0%)',
+          filter: 'grayscale(0%) blur(0px)',
           scale: 1,
           x: 0,
           y: 0,
-
           ease: 'circ',
         },
         '<'
@@ -130,7 +122,6 @@ export default {
 .main-paint {
   .meta {
     text-align: center;
-    // bottom: -100px;
     .subtitle {
       font-family: 'Courier New';
       color: #f684c4;
@@ -182,7 +173,7 @@ export default {
     max-width: 48vw;
   }
   .main-paint {
-    margin-bottom: 7vw !important;
+    margin-bottom: 10vw !important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

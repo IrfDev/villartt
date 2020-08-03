@@ -1,7 +1,7 @@
 <template>
   <div
+    class="row align-items-stretch d-flex instagram-horizontal justify-content-center m-0"
     @mouseenter="hoverRow = true"
-    class="row align-items-stretch d-flex instagram-horizontal justify-content-center m-0 mt-5 mb-5"
   >
     <div class="col-12 text-center">
       <h2>Instagram</h2>
@@ -10,7 +10,7 @@
       class="instagram-foto align-self-center justify-content-center text-center"
       v-for="(post, postIndex) in $page.instagramPosts.edges"
       :key="postIndex"
-      :style="`background: url('${post.node.display_url}');`"
+      :style="`background-image: url('${post.node.display_url}');`"
     >
       <!-- edge_media_to_caption {
           edges {
@@ -20,7 +20,7 @@
     </div>
     <div
       v-if="hoverRow"
-      class="col-10 col-lg-5 mt-5 pb-5 text-center cta-instagram justify-content-center"
+      class="col-10 col-lg-4 mt-5 pb-5 text-center cta-instagram justify-content-center"
     >
       <a href="https://www.instagram.com/vill.artt/" target="_blank">
         <img class="img-flui" src="../../static/instagram-logo.png" alt="instagram-logo" />
@@ -42,9 +42,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.instagram-horizontal div {
+.instagram-horizontal {
+  margin-top: 15vh !important;
+  margin-bottom: 5vh !important;
+}
+
+.instagram-horizontal .instagram-horizontal div {
   height: 100%;
 }
+
 .instagram-horizontal .instagram-foto {
   transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -82,11 +88,14 @@ export default {
 }
 
 .instagram-foto {
-  background-size: cover !important;
+  // background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   flex-basis: 40%;
   margin-left: -3%;
 
-  min-height: 13em;
+  min-height: 14em;
   width: 100%;
   border-radius: 7px;
   z-index: initial;
@@ -131,14 +140,12 @@ export default {
         #fd1d1d
       );
       color: white;
-      padding: 5% 10%;
-
+      padding: 5% 8%;
       animation: goDown 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
     }
   }
 
   .instagram-foto {
-    background-size: cover !important;
     flex-basis: 18%;
     margin-left: -3%;
 

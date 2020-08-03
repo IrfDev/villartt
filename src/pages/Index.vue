@@ -111,7 +111,7 @@ export default {
   --alfa-color-200: #fcd9ed;
   --box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.3), 0px 4px 20px #f684c4;
 
-  --base-font-size: 2em;
+  --base-font-size: 2.1em;
   --type-scale: 1.15;
 
   --scale-ctas: 2;
@@ -125,7 +125,7 @@ export default {
 }
 
 .typo-font-size {
-  font-size: calc(var(--base-font-size) * 6) !important;
+  font-size: calc(var(--base-font-size) * 5.5) !important;
 }
 
 .typo-subtitle {
@@ -141,7 +141,7 @@ export default {
 }
 
 p {
-  font-size: var(--paragraphs);
+  font-size: calc(var(--base-font-size) * 0.3);
 }
 button {
   font-size: var(--ctas);
@@ -153,7 +153,7 @@ h1 {
 }
 
 h2 {
-  font-size: var(--h2);
+  font-size: calc(var(--h2) * 1.25);
 }
 
 h3 {

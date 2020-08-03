@@ -1,7 +1,7 @@
 <template>
   <div class="main-paint row d-flex m-0 justify-content-center" :id="`odd-paint-${user.username}`">
     <div class="meta col-md-1 col-12 order-md-1 order-2">
-      <h4 class="subtitle">
+      <h4 class="subtitle text-center mt-lg-0 mt-3">
         ~ Pintada por
         <span class="artist-name">{{ user.username }}</span>
         👩🏻‍🎨
@@ -75,7 +75,7 @@ export default {
       let tl = gsap.timeline();
       tl.fromTo(
         `#odd-paint-${this.user.username} .odd-paint-pic-0`,
-        0.7,
+        0.8,
         {
           opacity: 1,
           filter: 'blur(5px)',
@@ -95,12 +95,10 @@ export default {
         {
           opacity: 0.95,
           scale: 1.05,
-          x: -12,
-          y: 40,
-          filter: 'grayscale(100%)',
+          filter: 'grayscale(100%) blur(7px)',
         },
         {
-          filter: 'grayscale(0%)',
+          filter: 'grayscale(0%) blur(0px)',
           scale: 1,
           opacity: 1,
           x: 0,
@@ -123,6 +121,7 @@ export default {
       font-family: Montserrat;
       color: #e3dde1;
       font-weight: 800;
+      text-align: center !important;
       font-size: calc(var(--base-font-size) * 0.8);
     }
     .subtitle {
@@ -140,7 +139,6 @@ export default {
   .text p {
     font-family: 'Courier New';
     font-size: 1.3em;
-    text-align: center;
     white-space: swrap;
     // line-break: strict;
     color: #f9aed8;
@@ -149,8 +147,8 @@ export default {
 
 @media screen and (min-width: 900px) {
   .main-paint {
-    margin-top: 5vw !important;
-    margin-bottom: 7vw !important;
+    margin-top: 15vw !important;
+    margin-bottom: 15vw !important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

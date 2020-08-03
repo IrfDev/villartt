@@ -1,9 +1,15 @@
 <template>
-  <div class="row m-0 justify-content-center">
+  <div class="artists row m-0 justify-content-center">
     <div class="col-12">
       <h2 class="text-center">Artistas</h2>
+      <observer @intersect="intersected" :id="'artistas-card'" />
     </div>
-    <div class="col-md-4 col-12" v-for="(villi, villiIndex) in $page.users.edges" :key="villiIndex">
+
+    <div
+      class="artist-card col-md-4 col-12"
+      v-for="(villi, villiIndex) in $page.users.edges"
+      :key="villiIndex"
+    >
       <div
         class="card border-0 d-flex justify-content-around align-items-center"
         :class="{
@@ -35,8 +41,30 @@
 </template>
 
 <script>
+import observer from '@/components/utilities/observer';
+import { TweenMax } from 'gsap';
+
 export default {
   name: 'Artists',
+
+  components: {
+    observer,
+  },
+
+  methods: {
+    intersected() {
+      TweenMax.from('.artist-card', {
+        duration: 0.7,
+        opacity: 0.5,
+        filter: 'blur(5px) grayscale(100%)',
+        ease: 'ease-in',
+        stagger: {
+          each: 0.2,
+          from: 'left',
+        },
+      });
+    },
+  },
 };
 </script>
 
@@ -60,10 +88,12 @@ h2 {
 }
 p {
   font-family: 'Courier New';
+  color: #f9aed8;
 }
 h3 {
   font-family: Montserrat;
   font-weight: 600;
+  color: #f684c4;
 }
 h1 {
   font-size: 4em !important;
@@ -73,8 +103,6 @@ p {
 }
 @media screen and (min-width: 768px) {
   h2 {
-    font-size: 7em;
-    margin: 10vh 0;
     transform: rotate(180deg);
     // text-decoration: underline;
   }
