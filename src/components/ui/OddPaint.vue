@@ -1,3 +1,5 @@
+// This is the first page
+
 <template>
   <div
     class="main-paint row d-flex m-0 justify-content-center"
@@ -158,8 +160,8 @@ export default {
 
 @media screen and (min-width: 900px) {
   .main-paint {
-    margin-top: 15vw !important;
-    margin-bottom: 15vw !important;
+    margin-top: 10vw !important;
+    margin-bottom: 10vw !important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

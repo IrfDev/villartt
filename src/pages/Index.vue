@@ -4,9 +4,9 @@
     <paints class="mt-5 mb-5" />
     <observer @intersect="intersected" :id="'main-cta-observer'" />
     <categories class="mt-5" />
+    <main-cta :class="{ 'd-none': !showCta }" />
     <instagram-horizontal />
     <artists />
-    <main-cta :class="{ 'd-none': !showCta }" />
     <the-footer />
   </Layout>
 </template>
@@ -122,9 +122,7 @@ export default {
       this.showCta = true;
     },
     scrollToPaints() {
-      console.log('elasd');
       let el = this.$el.getElementsByClassName('paint-structure')[0];
-      console.log(el);
       el.scrollIntoView({ behavior: 'smooth' });
     },
   },

@@ -37,15 +37,15 @@
 .cta {
   display: flex;
   justify-content: center !important;
-  position: fixed;
+  position: sticky;
   bottom: 1em;
   min-width: 100%;
-  animation: mainCta 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  animation: mainCta 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 @keyframes mainCta {
   from {
-    opacity: 0.5;
-    filter: blur(5px) grayscale(100%);
+    opacity: 0.7;
+    filter: blur(5px) grayscale(80%);
   }
 
   to {
@@ -56,6 +56,7 @@
 
 .main-cta {
   z-index: 100;
+  box-shadow: var(--box-shadow);
   font-weight: 600;
   font-family: Montserrat !important;
   padding: 1% 2%;

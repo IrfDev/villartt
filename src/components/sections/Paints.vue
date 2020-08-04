@@ -1,10 +1,10 @@
 <template>
-  <div data-scroll>
+  <div class="paint-structure " data-scroll>
     <h2>Pinturas</h2>
     <div
       v-for="(edge, edgeInedex) in pinturas"
       :key="edgeInedex"
-      class="paint-structure d-flex flex-column justify-content-between"
+      class="d-flex flex-column justify-content-between"
     >
       <odd-paint v-if="edgeInedex % 2 === 0" v-bind="edge.node" />
       <even-paint v-else v-bind="edge.node" />

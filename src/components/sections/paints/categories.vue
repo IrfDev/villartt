@@ -15,7 +15,7 @@
           class="category-wrapper"
           :class="{ active: active }"
           :style="
-            `background-image: url(https://admin.villartt.me${
+            `background: url(https://admin.villartt.me${
               categoria.node.foto.url
             }`
           "
@@ -130,12 +130,20 @@ export default {
   overflow-y: auto;
   flex-flow: row nowrap;
 }
+
+.category {
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+}
 .category-wrapper {
+  background-size: cover !important;
   padding: 8em 0%;
   border-radius: 8px;
+  height: 100%;
+  max-width: 100%;
   background-attachment: fixed;
-  background-size: cover;
-  background-position: top;
+  background-position: center !important;
   box-shadow: var(--box-shadow);
   transition: 5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -147,7 +155,7 @@ h3 {
 h5 {
 }
 .active {
-  padding: 50% 10% !important;
+  padding: 50% 10%;
 }
 p,
 h5 {
@@ -162,10 +170,10 @@ h5 {
     font-weight: 400;
   }
   .category-wrapper {
-    padding: 70% 40%;
+    padding: 75% 0%;
   }
   .active {
-    padding: 30% 10%;
+    padding: 25% 0%;
     transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
   h3 {
@@ -176,7 +184,7 @@ h5 {
   p,
   h3 {
     font-family: 'Courier New';
-    font-size: 2em;
+    font-size: 1.5em;
   }
   .row {
     margin: 0;

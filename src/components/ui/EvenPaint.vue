@@ -1,3 +1,4 @@
+// This is the second page
 <template>
   <div class="mt-3 main-paint mt-5 row d-flex m-0 justify-content-center">
     <observer @intersect="intersected" v-bind="options" />

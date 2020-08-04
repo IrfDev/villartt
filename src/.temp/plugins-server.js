@@ -1,4 +1,4 @@
-import plugin_gridsome_plugin_google_analytics_7 from "/Users/irving/Desktop/paralanube/onedrive/kode-mia/Portafolio/vue/villartt/villartt/node_modules/@gridsome/plugin-google-analytics/gridsome.client.js"
+import plugin_gridsome_plugin_google_analytics_7 from "/Users/irving/Library/Mobile Documents/com~apple~CloudDocs/Desktop/paralanube/onedrive/kode-mia/Portafolio/vue/villartt/villartt/node_modules/@gridsome/plugin-google-analytics/gridsome.client.js"
 
 export default [
   {
