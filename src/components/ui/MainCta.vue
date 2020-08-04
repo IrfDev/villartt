@@ -7,29 +7,35 @@
       data-mode="popup"
       style="text-decoration:none;background-color:#E50092;color:white;cursor:pointer;text-align:center;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;"
       target="_blank"
-    >¡Pide ahora!</a>
+      >¡Pide ahora!</a
+    >
   </div>
 </template>
 <script>
-(function () {
-  var qs,
-    js,
-    q,
-    s,
-    d = document,
-    gi = d.getElementById,
-    ce = d.createElement,
-    gt = d.getElementsByTagName,
-    id = 'typef_orm_share',
-    b = 'https://embed.typeform.com/';
-  if (!gi.call(d, id)) {
-    js = ce.call(d, 'script');
-    js.id = id;
-    js.src = b + 'embed.js';
-    q = gt.call(d, 'script')[0];
-    q.parentNode.insertBefore(js, q);
-  }
-})();
+export default {
+  beforeMount() {
+    function hello() {
+      var qs,
+        js,
+        q,
+        s,
+        d = document,
+        gi = d.getElementById,
+        ce = d.createElement,
+        gt = d.getElementsByTagName,
+        id = 'typef_orm_share',
+        b = 'https://embed.typeform.com/';
+      if (!gi.call(d, id)) {
+        js = ce.call(d, 'script');
+        js.id = id;
+        js.src = b + 'embed.js';
+        q = gt.call(d, 'script')[0];
+        q.parentNode.insertBefore(js, q);
+      }
+    }
+    hello();
+  },
+};
 </script>
 
 <style lang="scss" scoped>

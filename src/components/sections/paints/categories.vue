@@ -1,7 +1,10 @@
 <template>
   <div class="mt-5 mb-5">
+    <observer @intersect="intersected" v-bind="options" :id="'categories'" />
     <h2 class="text-center cat">Categorias</h2>
-    <div class="row category-row text-center justify-content-lg-center align-items-stretch m-0">
+    <div
+      class="row category-row text-center justify-content-lg-center align-items-stretch m-0"
+    >
       <div
         v-for="categoria in $page.categorias.edges"
         :key="categoria.id"
@@ -20,12 +23,14 @@
         />
       </div>
     </div>
-    <observer @intersect="intersected" v-bind="options" :id="'categories'" />
+
     <transition @enter="enter">
       <div class="container-fluid mt-4" v-if="active">
         <h3 class="text-center title">{{ categoryTitle }}</h3>
         <p class="text-center">🎨 {{ categoryDescription }}</p>
-        <div class="paints row mt-3 align-items-center m-0 justify-content-center">
+        <div
+          class="paints row mt-3 align-items-center m-0 justify-content-center"
+        >
           <div
             class="ind-paint col-md-3 col-6 mt-3"
             v-for="(paint, paintIndex) in categoryPaints"
@@ -148,15 +153,15 @@ export default {
   background-attachment: fixed;
   background-position: center !important;
   box-shadow: var(--box-shadow);
-  transition: 5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .title {
-  font-size: 1em !important;
+  font-size: 0.9em !important;
 }
 h3 {
 }
 h5 {
-  font-size: 1em;
+  font-size: 0.8em;
 }
 .active {
   padding: 50% 10%;

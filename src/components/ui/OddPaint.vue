@@ -1,7 +1,10 @@
 // This is the first page
 
 <template>
-  <div class="main-paint row d-flex m-0 justify-content-center" :id="`odd-paint-${user.username}`">
+  <div
+    class="main-paint row d-flex m-0 justify-content-center"
+    :id="`odd-paint-${user.username}`"
+  >
     <div class="meta col-md-1 col-12 order-md-1 order-2">
       <h4 class="subtitle text-center mt-lg-0 mt-3">
         ~ Pintada por
@@ -11,7 +14,11 @@
       <h2 class="title">-{{ titulo }}</h2>
     </div>
     <div class="paint order-md-2 order-1 col-md-11 col-11 d-flex">
-      <observer @intersect="intersected" v-bind="options" :id="'odd-paint-observer'" />
+      <observer
+        @intersect="intersected"
+        v-bind="options"
+        :id="'odd-paint-observer'"
+      />
       <img
         v-for="(foto, fotoIndex) in fotos"
         :key="fotoIndex"
@@ -20,7 +27,11 @@
         :class="`odd-paint-pic-${fotoIndex}`"
         :alt="`Villartt pintura ${titulo}`"
       />
-      <paint-show :titulo="`odd-paint`" :fotos="fotos" class="align-self-center d-lg-none d-flex" />
+      <paint-show
+        :titulo="`odd-paint`"
+        :fotos="fotos"
+        class="align-self-center d-lg-none d-flex"
+      />
     </div>
     <!-- <div class="text col-12 col-lg-1 order-3 text-center text-md-right">
       <p>{{ descripcion }}.</p>
@@ -124,12 +135,12 @@ export default {
       color: #e3dde1;
       font-weight: 800;
       text-align: center !important;
-      font-size: calc(var(--base-font-size) * 0.8);
+      font-size: calc(var(--base-font-size) * 1.5);
     }
     .subtitle {
       font-family: 'Courier New';
       color: #f684c4;
-      font-size: calc(var(--base-font-size) * 0.3);
+      font-size: calc(var(--base-font-size) * 0.7);
       .artist-name {
         font-weight: 300;
 
@@ -158,22 +169,23 @@ export default {
       // transform-origin: 90% 42%;
       transform: rotate(-90deg);
       margin-top: 25em;
-
       white-space: nowrap;
+      .title {
+        font-family: Montserrat;
+        color: #e3dde1;
+
+        font-weight: 800 !important;
+        font-size: 3em;
+      }
 
       .subtitle {
         font-family: 'Courier New';
         color: #f684c4;
+        font-size: calc(var(--base-font-size) * 0.3);
         .artist-name {
           font-weight: 300;
           color: var(--alfa-color);
         }
-      }
-      .title {
-        font-family: Montserrat;
-        color: #e3dde1;
-        font-weight: 800;
-        font-size: 3em;
       }
     }
 

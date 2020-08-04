@@ -23,7 +23,11 @@
       class="col-10 col-lg-4 mt-5 pb-5 text-center cta-instagram justify-content-center"
     >
       <a href="https://www.instagram.com/vill.artt/" target="_blank">
-        <img class="img-flui" src="../../static/instagram-logo.png" alt="instagram-logo" />
+        <img
+          class="img-flui"
+          src="../../static/instagram-logo.png"
+          alt="instagram-logo"
+        />
       </a>
     </div>
   </div>
@@ -101,7 +105,7 @@ export default {
   z-index: initial;
 }
 .instagram-foto:nth-of-type(even) {
-  transform: rotate(7deg);
+  transform: rotate(-7deg);
 }
 
 .instagram-foto:nth-of-type(odd) {

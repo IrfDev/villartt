@@ -2,7 +2,9 @@
 <template>
   <div class="mt-3 main-paint mt-5 row d-flex m-0 justify-content-center">
     <observer @intersect="intersected" v-bind="options" />
-    <div class="paint order-md-1 order-1 col-md-11 col-11 justify-content-center d-flex">
+    <div
+      class="paint order-md-1 order-1 col-md-11 col-11 justify-content-center d-flex"
+    >
       <img
         v-for="(foto, fotoIndex) in fotos"
         :key="fotoIndex"
@@ -11,15 +13,21 @@
         :id="`even-paint-pic-${fotoIndex}`"
         :alt="`Villartt pintura ${titulo}`"
       />
-      <paint-show :titulo="`even-paint`" :fotos="fotos" class="align-self-center d-lg-none d-flex" />
+      <paint-show
+        :titulo="`even-paint`"
+        :fotos="fotos"
+        class="align-self-center d-lg-none d-flex"
+      />
     </div>
-    <div class="meta mt-4 mt-lg-0 col-md-1 col-12 order-md-2 order-2 d-flex flex-column">
+    <div
+      class="meta mt-4 mt-lg-0 col-md-1 col-12 order-md-2 order-2 d-flex flex-column"
+    >
       <h3 class="subtitle">
         ~Pintada por
         <span class="artist-name">{{ user.username }}</span>
         👩🏻‍🎨
       </h3>
-      <h2 class="title order-md-2 order-1">-{{titulo}}</h2>
+      <h2 class="title order-md-2 order-1">-{{ titulo }}</h2>
     </div>
   </div>
 </template>
@@ -52,7 +60,9 @@ export default {
 
   filters: {
     fechaEnDias(date) {
-      return moment(date).locale('es').fromNow();
+      return moment(date)
+        .locale('es')
+        .fromNow();
     },
   },
 
@@ -124,6 +134,7 @@ export default {
   .meta {
     text-align: center;
     .subtitle {
+      font-size: calc(var(--base-font-size) * 0.7);
       font-family: 'Courier New';
       color: #f684c4;
       .artist-name {
@@ -133,6 +144,7 @@ export default {
     }
     .title {
       color: #e3dde1;
+      font-size: calc(var(--base-font-size) * 1.5);
       font-family: Montserrat;
       font-weight: 800;
     }
@@ -161,10 +173,8 @@ export default {
     transform-origin: unset;
     .title {
       text-align: center;
-      font-size: calc(var(--base-font-size) * 0.8);
     }
     .subtitle {
-      font-size: calc(var(--base-font-size) * 0.3);
     }
   }
 }
@@ -187,6 +197,7 @@ export default {
       // bottom: -100px;
       .subtitle {
         font-family: 'Courier New';
+        font-size: calc(var(--base-font-size) * 0.3);
         color: #f684c4;
         .artist-name {
           font-weight: 300;
@@ -194,6 +205,7 @@ export default {
         }
       }
       .title {
+        font-size: 3em;
         color: #e3dde1;
         font-family: Montserrat;
         font-weight: 800;

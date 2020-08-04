@@ -6,7 +6,7 @@
     </div>
 
     <div
-      class="artist-card col-md-4 col-12"
+      class="artist-card col-md-4 col-12 mt-4"
       v-for="(villi, villiIndex) in $page.users.edges"
       :key="villiIndex"
     >

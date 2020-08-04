@@ -20,7 +20,6 @@
     </div>
     <a
       class="carousel-control-prev"
-      :href="`#carouselControls-${titulo}`"
       role="button"
       data-slide="prev"
       v-if="activeItem >= 1"
@@ -32,7 +31,6 @@
     <a
       v-if="activeItem < 1"
       class="carousel-control-next"
-      :href="`#carouselControls-${titulo}`"
       role="button"
       @click="activeItem++"
       data-slide="next"

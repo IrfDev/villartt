@@ -88,7 +88,6 @@ query {
 
 <script>
 import NewHeader from '@/components/sections/NewHeader.vue';
-// import Headerr from '@/components/sections/Header.vue';
 import paints from '@/components/sections/Paints.vue';
 import categories from '@/components/sections/paints/categories.vue';
 import Artists from '@/components/sections/Artists.vue';
@@ -98,8 +97,6 @@ import MainCta from '@/components/ui/MainCta.vue';
 import observer from '@/components/utilities/observer';
 
 export default {
-  name: 'Home',
-
   components: {
     NewHeader,
     paints,
@@ -181,7 +178,7 @@ export default {
   --alfa-color-200: #fcd9ed;
   --box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.3), 0px 4px 20px #f684c4;
 
-  --base-font-size: 2.1em;
+  --base-font-size: 1.8em;
   --type-scale: 1.15;
 
   --scale-ctas: 2;
@@ -195,7 +192,7 @@ export default {
 }
 
 .typo-font-size {
-  font-size: calc(var(--base-font-size) * 5.5) !important;
+  font-size: calc(var(--base-font-size) * 4.5) !important;
 }
 
 .typo-subtitle {
