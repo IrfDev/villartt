@@ -52,7 +52,7 @@ p {
   border-radius: 8px;
   font-family: Montserrat;
   font-weight: 500;
-  box-shadow: 5px 4px 30px rgba(0, 0, 0, 0.289);
+  box-shadow: 5px 4px 30px rgba(0, 0, 0, 0.358);
   .card-title {
     font-size: 0em;
     opacity: 0;

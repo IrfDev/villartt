@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'observer',
-  props: 'options',
+  props: ['options'],
   data: () => ({
     observer: null,
   }),

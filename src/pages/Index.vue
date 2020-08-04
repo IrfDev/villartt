@@ -180,7 +180,8 @@ export default {
 :root {
   --alfa-color: #e50092;
   --alfa-color-200: #fcd9ed;
-  --box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.3), 0px 4px 20px #f684c4;
+  --box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.3),
+    0px 4px 20px rgba(246, 132, 196, 0.3);
 
   --base-font-size: 1.8em;
   --type-scale: 1.15;

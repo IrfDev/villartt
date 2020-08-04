@@ -70,8 +70,10 @@ export default {
 
 <style lang="scss" scoped>
 .circle {
-  width: 200px;
-  height: 200px;
+  min-width: 200px;
+  min-height: 200px;
+  shape-outside: circle();
+
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50%;
@@ -94,7 +96,7 @@ h3 {
   font-family: Montserrat;
   font-weight: 600;
   color: #f684c4;
-  font-size: 2.5em !important;
+  font-size: 2.1em !important;
 }
 h1 {
 }

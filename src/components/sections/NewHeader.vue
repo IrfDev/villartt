@@ -77,7 +77,7 @@ h2 {
   color: transparent;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   z-index: 1;
 }
 @keyframes super {
