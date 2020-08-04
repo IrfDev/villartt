@@ -7,12 +7,11 @@
       data-mode="popup"
       style="text-decoration:none;background-color:#E50092;color:white;cursor:pointer;text-align:center;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;"
       target="_blank"
-      >¡Pide ahora!
-    </a>
+    >¡Pide ahora!</a>
   </div>
 </template>
 <script>
-(function() {
+(function () {
   var qs,
     js,
     q,

@@ -82,7 +82,7 @@ export default {
 }
 
 h2 {
-  margin: 10vh 0;
+  margin: 0vh 0;
   transform: rotate(180deg);
   // text-decoration: underline;
 }
@@ -94,9 +94,9 @@ h3 {
   font-family: Montserrat;
   font-weight: 600;
   color: #f684c4;
+  font-size: 2.5em !important;
 }
 h1 {
-  font-size: 4em !important;
 }
 p {
   font-size: 1em !important;

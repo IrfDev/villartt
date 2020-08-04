@@ -1,10 +1,7 @@
 // This is the first page
 
 <template>
-  <div
-    class="main-paint row d-flex m-0 justify-content-center"
-    :id="`odd-paint-${user.username}`"
-  >
+  <div class="main-paint row d-flex m-0 justify-content-center" :id="`odd-paint-${user.username}`">
     <div class="meta col-md-1 col-12 order-md-1 order-2">
       <h4 class="subtitle text-center mt-lg-0 mt-3">
         ~ Pintada por
@@ -14,11 +11,7 @@
       <h2 class="title">-{{ titulo }}</h2>
     </div>
     <div class="paint order-md-2 order-1 col-md-11 col-11 d-flex">
-      <observer
-        @intersect="intersected"
-        v-bind="options"
-        :id="'odd-paint-observer'"
-      />
+      <observer @intersect="intersected" v-bind="options" :id="'odd-paint-observer'" />
       <img
         v-for="(foto, fotoIndex) in fotos"
         :key="fotoIndex"
@@ -27,11 +20,7 @@
         :class="`odd-paint-pic-${fotoIndex}`"
         :alt="`Villartt pintura ${titulo}`"
       />
-      <paint-show
-        :titulo="`odd-paint`"
-        :fotos="fotos"
-        class="align-self-center d-lg-none d-flex"
-      />
+      <paint-show :titulo="`odd-paint`" :fotos="fotos" class="align-self-center d-lg-none d-flex" />
     </div>
     <!-- <div class="text col-12 col-lg-1 order-3 text-center text-md-right">
       <p>{{ descripcion }}.</p>
@@ -168,7 +157,7 @@ export default {
     .meta {
       // transform-origin: 90% 42%;
       transform: rotate(-90deg);
-      margin-top: 20em;
+      margin-top: 25em;
 
       white-space: nowrap;
 
@@ -191,7 +180,7 @@ export default {
     .text p {
       font-family: 'Courier New';
       font-size: 1.3em;
-      transform-origin: 9em -6em;
+      transform-origin: 10em -6em;
       white-space: wrap;
       line-break: strict;
       color: #f9aed8;
@@ -203,7 +192,7 @@ export default {
       position: relative;
       border-radius: 8px;
       max-height: 100%;
-      max-width: 48vw;
+      max-width: 47vw;
     }
 
     img:nth-of-type(1) {
