@@ -3,6 +3,7 @@
     <!-- id="main-cta-typeform" -->
     <a
       class="typeform-share button main-cta text-center"
+      rel="noreferrer"
       href="https://form.typeform.com/to/GVqFyAA1"
       data-mode="popup"
       style="text-decoration:none;background-color:#E50092;color:white;cursor:pointer;text-align:center;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;"

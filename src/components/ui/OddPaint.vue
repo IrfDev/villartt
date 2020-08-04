@@ -168,7 +168,7 @@ export default {
     .meta {
       // transform-origin: 90% 42%;
       transform: rotate(-90deg);
-      margin-top: 25em;
+      margin-top: 26em;
       white-space: nowrap;
       .title {
         font-family: Montserrat;

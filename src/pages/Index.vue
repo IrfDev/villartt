@@ -131,7 +131,11 @@ export default {
       meta: [
         { name: 'theme-color', content: '#F250AB' },
         { key: 'og:type', property: 'og:type', content: 'website' },
-        { key: 'og:image', property: 'og:image', content: '/og-image.jpeg' },
+        {
+          key: 'og:image',
+          property: 'og:image',
+          content: 'https://villartt.me/og-image.jpg',
+        },
         {
           key: 'og:title',
           property: 'og:title',
@@ -152,7 +156,7 @@ export default {
         {
           key: 'twitter:image',
           property: 'twitter:image',
-          content: '/og-image.jpeg',
+          content: 'https://villartt.me/og-image.jpg',
         },
         {
           key: 'twitter:description',

@@ -49,10 +49,14 @@ button {
 }
 .row::after {
   content: '';
-  background-size: contain;
+  background-position: center !important;
+  @media screen and (min-width: 768px) {
+    background-position: unset !important;
+  }
   background-repeat: no-repeat;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   animation-name: simpleImage;
+  background-attachment: fixed;
   animation-duration: 0.8s;
   animation-fill-mode: forwards;
   z-index: 0;
@@ -68,8 +72,10 @@ h2 {
   font-weight: 700;
   animation: super 2s forwards cubic-bezier(0.075, 0.82, 0.165, 1);
   position: absolute;
+
   background-clip: text;
   color: transparent;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: contain;
   z-index: 1;
@@ -94,7 +100,8 @@ h2 {
     height: 100vh;
     width: 100vw;
     opacity: 1;
-    background-size: contain;
+    background-size: cover;
+
     background-repeat: no-repeat;
     background: radial-gradient(
         57.16% 87.39% at 49.64% 49.45%,
