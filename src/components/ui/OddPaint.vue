@@ -1,5 +1,8 @@
 <template>
-  <div class="main-paint row d-flex m-0 justify-content-center" :id="`odd-paint-${user.username}`">
+  <div
+    class="main-paint row d-flex m-0 justify-content-center"
+    :id="`odd-paint-${user.username}`"
+  >
     <div class="meta col-md-1 col-12 order-md-1 order-2">
       <h4 class="subtitle text-center mt-lg-0 mt-3">
         ~ Pintada por
@@ -9,7 +12,11 @@
       <h2 class="title">-{{ titulo }}</h2>
     </div>
     <div class="paint order-md-2 order-1 col-md-11 col-11 d-flex">
-      <observer @intersect="intersected" v-bind="options" />
+      <observer
+        @intersect="intersected"
+        v-bind="options"
+        :id="'odd-paint-observer'"
+      />
       <img
         v-for="(foto, fotoIndex) in fotos"
         :key="fotoIndex"
@@ -18,7 +25,11 @@
         :class="`odd-paint-pic-${fotoIndex}`"
         :alt="`Villartt pintura ${titulo}`"
       />
-      <paint-show :titulo="titulo" :fotos="fotos" class="align-self-center d-lg-none d-flex" />
+      <paint-show
+        :titulo="`odd-paint`"
+        :fotos="fotos"
+        class="align-self-center d-lg-none d-flex"
+      />
     </div>
     <!-- <div class="text col-12 col-lg-1 order-3 text-center text-md-right">
       <p>{{ descripcion }}.</p>
@@ -103,7 +114,7 @@ export default {
           opacity: 1,
           x: 0,
           y: 0,
-          zIndex: 1,
+          zIndex: 0,
           ease: 'circ',
         },
         '<'

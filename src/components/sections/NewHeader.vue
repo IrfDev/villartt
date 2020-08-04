@@ -3,6 +3,7 @@
     <div class="col text-center">
       <h1 class="typo-font-size">Villartt</h1>
       <h2 class="typo-subtitle">Artistas de la Ciudad De México</h2>
+      <button @click="scrollNext">👇🏻</button>
     </div>
   </div>
 </template>
@@ -10,10 +11,39 @@
 <script>
 export default {
   name: 'NewHeader',
+
+  methods: {
+    scrollNext() {
+      this.$emit('clickHeader');
+      console.log('object');
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+button {
+  border: none;
+  background-color: transparent;
+  font-size: var(--base-font-size);
+  text-shadow: 2px 1px 20px rgba(51, 51, 51, 0.276);
+  transform: scale(0);
+  animation: ctaIntro 0.4s 1s ease-in-out forwards;
+}
+
+@keyframes ctaIntro {
+  from {
+    filter: blur(7px);
+    transform: scale(0.4);
+    opacity: 0.4;
+  }
+  to {
+    filter: blur(0px);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .row {
   height: 100vh;
 }
@@ -21,10 +51,8 @@ export default {
   content: '';
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   animation-name: simpleImage;
-  // animation-delay: 0.01s;
   animation-duration: 0.8s;
   animation-fill-mode: forwards;
-  // animation-timing-function: ease-out;
   z-index: 0;
 }
 h1 {
@@ -70,7 +98,7 @@ h2 {
         rgba(0, 0, 0, 0.31) 0%,
         rgba(0, 0, 0, 0) 100%
       ),
-      url('../../../static/header-bg.jpg');
+      url('/header-bg.jpg');
   }
 }
 </style>

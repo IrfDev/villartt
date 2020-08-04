@@ -1,10 +1,12 @@
 <template>
   <Layout>
-    <new-header />
+    <new-header @clickHeader="scrollToPaints" />
     <paints class="mt-5 mb-5" />
+    <observer @intersect="intersected" :id="'main-cta-observer'" />
     <categories class="mt-5" />
     <instagram-horizontal />
     <artists />
+    <main-cta :class="{ 'd-none': !showCta }" />
     <the-footer />
   </Layout>
 </template>
@@ -13,7 +15,7 @@
 
  
 query {
-   instagramPosts:allInstagramPhoto(limit:6) {
+   instagramPosts:allInstagramPhoto(limit:6, order:ASC) {
     edges {
       node {
         display_url
@@ -92,18 +94,85 @@ import categories from '@/components/sections/paints/categories.vue';
 import Artists from '@/components/sections/Artists.vue';
 import InstagramHorizontal from '@/components/sections/InstagramHorizontal.vue';
 import TheFooter from '@/components/sections/TheFooter.vue';
+import MainCta from '@/components/ui/MainCta.vue';
+import observer from '@/components/utilities/observer';
 
 export default {
-  metaInfo: {
-    title: '👩🏻‍🎨 Inicio',
-  },
+  name: 'Home',
+
   components: {
     NewHeader,
     paints,
     categories,
     InstagramHorizontal,
     Artists,
+    MainCta,
     TheFooter,
+    observer,
+  },
+
+  data() {
+    return {
+      showCta: false,
+    };
+  },
+
+  methods: {
+    intersected() {
+      this.showCta = true;
+    },
+    scrollToPaints() {
+      console.log('elasd');
+      let el = this.$el.getElementsByClassName('paint-structure')[0];
+      console.log(el);
+      el.scrollIntoView({ behavior: 'smooth' });
+    },
+  },
+
+  metaInfo() {
+    return {
+      title: '👩🏻‍🎨 Inicio',
+
+      meta: [
+        { name: 'theme-color', content: '#F250AB' },
+        { key: 'og:type', property: 'og:type', content: 'website' },
+        { key: 'og:image', property: 'og:image', content: '/og-image.jpeg' },
+        {
+          key: 'og:title',
+          property: 'og:title',
+          content: 'Villartt - Arte en la Ciudad de México',
+        },
+        {
+          key: 'og:description',
+          name: 'og:description',
+          content:
+            'Artistas en la Ciudad de México, convertimos tu idea en arte. ¡Mándanos un mensaje con tu idea y la convertiremos en arte! Pedidos disponibles',
+        },
+        { key: 'og:url', property: 'og:url', content: 'https://villartt.me' },
+        {
+          key: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Villartt - Arte en la Ciudad de México',
+        },
+        {
+          key: 'twitter:image',
+          property: 'twitter:image',
+          content: '/og-image.jpeg',
+        },
+        {
+          key: 'twitter:description',
+          name: 'twitter:description',
+          content:
+            'Artistas en la Ciudad de México, convertimos tu idea en arte. ¡Mándanos un mensaje con tu idea y la convertiremos en arte! Pedidos disponibles',
+        },
+
+        {
+          key: 'twitter:cardl',
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+      ],
+    };
   },
 };
 </script>

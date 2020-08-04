@@ -1,7 +1,9 @@
 <template>
   <div class="mt-3 main-paint mt-5 row d-flex m-0 justify-content-center">
     <observer @intersect="intersected" v-bind="options" />
-    <div class="paint order-md-1 order-1 col-md-11 col-11 justify-content-center d-flex">
+    <div
+      class="paint order-md-1 order-1 col-md-11 col-11 justify-content-center d-flex"
+    >
       <img
         v-for="(foto, fotoIndex) in fotos"
         :key="fotoIndex"
@@ -10,9 +12,15 @@
         :id="`even-paint-pic-${fotoIndex}`"
         :alt="`Villartt pintura ${titulo}`"
       />
-      <paint-show :titulo="titulo" :fotos="fotos" class="align-self-center d-lg-none d-flex" />
+      <paint-show
+        :titulo="`even-paint`"
+        :fotos="fotos"
+        class="align-self-center d-lg-none d-flex"
+      />
     </div>
-    <div class="meta mt-4 mt-lg-0 col-md-1 col-12 order-md-2 order-2 d-flex flex-column">
+    <div
+      class="meta mt-4 mt-lg-0 col-md-1 col-12 order-md-2 order-2 d-flex flex-column"
+    >
       <h3 class="subtitle">
         ~Pintada por
         <span class="artist-name">{{ user.username }}</span>
@@ -51,7 +59,9 @@ export default {
 
   filters: {
     fechaEnDias(date) {
-      return moment(date).locale('es').fromNow();
+      return moment(date)
+        .locale('es')
+        .fromNow();
     },
   },
 

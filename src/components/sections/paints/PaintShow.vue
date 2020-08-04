@@ -1,13 +1,21 @@
 <template>
-  <div :id="`carouselControls-${titulo}`" class="carousel slide" data-ride="carousel">
+  <div
+    :id="`carouselControls-${titulo}`"
+    class="carousel slide"
+    data-ride="carousel"
+  >
     <div class="carousel-inner">
       <div
         v-for="(foto, fotoIndex) in fotos"
         :key="fotoIndex"
         class="carousel-item"
-        :class="{'active': fotoIndex === activeItem}"
+        :class="{ active: fotoIndex === activeItem }"
       >
-        <img :src="`https://admin.villartt.me${foto.url}`" class="img-fluid" alt="Villartt-pintura" />
+        <img
+          :src="`https://admin.villartt.me${foto.url}`"
+          class="img-fluid"
+          alt="Villartt-pintura"
+        />
       </div>
     </div>
     <a
@@ -16,17 +24,17 @@
       role="button"
       data-slide="prev"
       v-if="activeItem >= 1"
-      @click="activeItem --"
+      @click="activeItem--"
     >
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
     <a
-      v-if="activeItem <1"
+      v-if="activeItem < 1"
       class="carousel-control-next"
       :href="`#carouselControls-${titulo}`"
       role="button"
-      @click="activeItem ++"
+      @click="activeItem++"
       data-slide="next"
     >
       <span class="carousel-control-next-icon" aria-hidden="true"></span>

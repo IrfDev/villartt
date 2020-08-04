@@ -1,8 +1,9 @@
 <template>
   <div class="mt-5 mb-5">
-    <observer @intersect="intersected" v-bind="options" :id="'categories'" />
     <h2 class="text-center cat">Categorias</h2>
-    <div class="row category-row text-center justify-content-lg-center align-items-stretch m-0">
+    <div
+      class="row category-row text-center justify-content-lg-center align-items-stretch m-0"
+    >
       <div
         v-for="categoria in $page.categorias.edges"
         :key="categoria.id"
@@ -20,6 +21,7 @@
           "
         />
       </div>
+      <observer @intersect="intersected" v-bind="options" :id="'categories'" />
     </div>
     <transition @enter="enter">
       <div class="container-fluid" v-if="active">
