@@ -103,7 +103,7 @@ h2 {
     background-size: cover;
 
     background-repeat: no-repeat;
-    background: radial-gradient(
+    background-image: radial-gradient(
         57.16% 87.39% at 49.64% 49.45%,
         rgba(0, 0, 0, 0.31) 0%,
         rgba(0, 0, 0, 0) 100%

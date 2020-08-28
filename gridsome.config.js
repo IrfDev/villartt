@@ -7,14 +7,14 @@
 module.exports = {
   siteName: 'Villartt',
   siteDescription:
-    'Daniela Villanueva y Andrea Villanueva presentando su proyecto artístico, le damos vida a tus ideas entra y ve nuestro trabajo 👩🏻‍🎨',
+    'Proyecto artístico en la Ciudad de México, conoce el trabajo de Daniela Villanueva y Andrea Villanueva quienes siguen manteniendo su talento y convirtiendo ideas en arte.',
   siteUrl: 'https://villartt.me',
   plugins: [
     {
       use: '@zefman/gridsome-source-instagram',
       options: {
         username: 'vill.artt', // Instagram username
-        typeName: 'InstagramPhoto', // The GraphQL type you want the photos to be added under. Defaults to InstagramPhoto
+        typeName: 'instagramPhoto', // The GraphQL type you want the photos to be added under. Defaults to InstagramPhoto
       },
     },
     {

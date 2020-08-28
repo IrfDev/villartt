@@ -166,7 +166,7 @@ export default {
         },
 
         {
-          key: 'twitter:cardl',
+          key: 'twitter:card',
           property: 'twitter:card',
           content: 'summary_large_image',
         },
