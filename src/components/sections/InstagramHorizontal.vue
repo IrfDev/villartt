@@ -2,6 +2,7 @@
   <div
     class="row p-5 align-items-stretch d-flex instagram-horizontal justify-content-center m-0 mb-5"
     @mouseenter="hoverRow = true"
+    v-if="photos"
     id="instagram-horizontal"
   >
     <div class="col-12 text-center">
@@ -9,7 +10,7 @@
     </div>
     <div
       class="instagram-foto align-self-center justify-content-center text-center"
-      v-for="(post, postIndex) in photos.edges"
+      v-for="(post, postIndex) in firstPictures"
       :key="postIndex"
       :style="`background-image: url('${post.node.display_url}');`"
     >
@@ -48,13 +49,9 @@ export default {
       const igProfileJson = await axios.get(
         `https://www.instagram.com/vill.artt/?__a=1`
       );
-      igProfileJson.data.graphql.user.edge_owner_to_timeline_media.edges.splice(
-        6,
-        6
-      );
 
       this.photos =
-        igProfileJson.data.graphql.user.edge_owner_to_timeline_media;
+        igProfileJson.data.graphql.user.edge_owner_to_timeline_media.edges;
       this.startAnimation();
     } catch (error) {
       console.log(error);
@@ -76,6 +73,12 @@ export default {
         duration: 1,
         filter: 'blur(100px)',
       });
+    },
+  },
+
+  computed: {
+    firstPictures() {
+      if (this.photos) return this.photos.splice(0, 6);
     },
   },
 

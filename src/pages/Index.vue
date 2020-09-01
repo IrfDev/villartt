@@ -15,20 +15,6 @@
 
  
 query {
-   instagramPosts:allInstagramPhoto(limit:6, order:ASC) {
-    edges {
-      node {
-        display_url
-        edge_media_to_caption {
-          edges {
-            node {
-              text
-            }
-          }
-        }
-      }
-    }
-  }
   pinturas:allStrapiPinturas{
   edges{
       node{
