@@ -1,5 +1,4 @@
 // This is the first page
-
 <template>
   <div
     class="main-paint row d-flex m-0 justify-content-center"
@@ -33,9 +32,6 @@
         class="align-self-center d-lg-none d-flex"
       />
     </div>
-    <!-- <div class="text col-12 col-lg-1 order-3 text-center text-md-right">
-      <p>{{ descripcion }}.</p>
-    </div>-->
   </div>
 </template>
 

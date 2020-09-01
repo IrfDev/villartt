@@ -8,8 +8,8 @@
     <div
       class="card-img-overlay align-center d-flex justify-content-center align-items-center flex-column"
     >
-      <h5 class="card-title">-{{titulo}}</h5>
-      <p>👉🏻{{descripcion}}</p>
+      <h5 class="card-title">-{{ titulo }}</h5>
+      <p>👉🏻{{ descripcion }}</p>
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @media screen and (max-width: 768px) {
   .card:hover {
     img {
