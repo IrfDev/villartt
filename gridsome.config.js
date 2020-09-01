@@ -10,13 +10,13 @@ module.exports = {
     'Proyecto artístico en la Ciudad de México, conoce el trabajo de Daniela Villanueva y Andrea Villanueva quienes siguen manteniendo su talento y convirtiendo ideas en arte.',
   siteUrl: 'https://villartt.me',
   plugins: [
-    {
-      use: '@zefman/gridsome-source-instagram',
-      options: {
-        username: 'vill.artt', // Instagram username
-        typeName: 'InstagramPhoto', // The GraphQL type you want the photos to be added under. Defaults to InstagramPhoto
-      },
-    },
+    // {
+    //   use: '@zefman/gridsome-source-instagram',
+    //   options: {
+    //     username: 'vill.artt', // Instagram username
+    //     typeName: 'InstagramPhoto', // The GraphQL type you want the photos to be added under. Defaults to InstagramPhoto
+    //   },
+    // },
     {
       use: '@gridsome/source-strapi',
       options: {
