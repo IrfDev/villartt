@@ -1,14 +1,15 @@
 <template>
   <div
-    class="row align-items-stretch d-flex instagram-horizontal justify-content-center m-0"
+    class="row p-5 align-items-stretch d-flex instagram-horizontal justify-content-center m-0 mb-5"
     @mouseenter="hoverRow = true"
+    id="instagram-horizontal"
   >
     <div class="col-12 text-center">
       <h2>Instagram</h2>
     </div>
     <div
       class="instagram-foto align-self-center justify-content-center text-center"
-      v-for="(post, postIndex) in $page.instagramPosts.edges"
+      v-for="(post, postIndex) in photos.edges"
       :key="postIndex"
       :style="`background-image: url('${post.node.display_url}');`"
     >
@@ -34,12 +35,54 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
+gsap.registerPlugin(ScrollTrigger);
+
 export default {
   name: 'InstagramHorizontalPost',
+
+  async mounted() {
+    try {
+      const igProfileJson = await axios.get(
+        `https://www.instagram.com/vill.artt/?__a=1`
+      );
+      igProfileJson.data.graphql.user.edge_owner_to_timeline_media.edges.splice(
+        6,
+        6
+      );
+
+      this.photos =
+        igProfileJson.data.graphql.user.edge_owner_to_timeline_media;
+      this.startAnimation();
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  methods: {
+    startAnimation() {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#instagram-horizontal',
+          start: 'top bottom',
+          end: 'bottom bottom',
+          scrub: true,
+        },
+      });
+
+      tl.from('#instagram-horizontal ', {
+        duration: 1,
+        filter: 'blur(100px)',
+      });
+    },
+  },
 
   data() {
     return {
       hoverRow: false,
+      photos: null,
     };
   },
 };
@@ -47,7 +90,7 @@ export default {
 
 <style lang="scss" scoped>
 .instagram-horizontal {
-  margin-top: 15vh !important;
+  margin-top: 10% !important;
   margin-bottom: 5vh !important;
 }
 
@@ -66,7 +109,11 @@ export default {
     transform: none;
     flex-basis: 43%;
   }
+  .instagram-foto:hover {
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
 }
+
 .cta-instagram {
   height: 100%;
   a {
@@ -98,7 +145,6 @@ export default {
   background-repeat: no-repeat;
   flex-basis: 40%;
   margin-left: -3%;
-
   min-height: 14em;
   width: 100%;
   border-radius: 7px;

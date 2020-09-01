@@ -1,12 +1,12 @@
 <template>
-  <div class="artists row m-0 justify-content-center">
+  <div class="artists row m-0 justify-content-center" id="artists">
     <div class="col-12">
-      <h2 class="text-center">Artistas</h2>
-      <observer @intersect="intersected" :id="'artistas-card'" />
+      <h2 class="title-section text-center">Artistas</h2>
+      <!-- <observer @intersect="intersected" :id="'artistas-card'" /> -->
     </div>
 
     <div
-      class="artist-card col-md-4 col-12 mt-4"
+      class="artist-card  col-md-4 col-12 mt-4"
       v-for="(villi, villiIndex) in $page.users.edges"
       :key="villiIndex"
     >
@@ -42,7 +42,9 @@
 
 <script>
 import observer from '@/components/utilities/observer';
-import { TweenMax } from 'gsap';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   name: 'Artists',
@@ -51,16 +53,32 @@ export default {
     observer,
   },
 
+  mounted() {
+    this.startAnimation();
+  },
+
   methods: {
-    intersected() {
-      TweenMax.from('.artist-card', {
-        duration: 0.7,
-        opacity: 0.5,
+    startAnimation() {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#artists',
+          start: 'top bottom',
+          end: 'bottom bottom',
+          scrub: true,
+        },
+      });
+
+      tl.from('#artists h2', {
+        duration: 1,
+        rotate: '174deg',
+      }).from('#artists .artist-card .card', {
+        duration: 1,
+        opacity: 0.8,
+        transform: 'translateY(-4em)',
         filter: 'blur(5px) grayscale(100%)',
         ease: 'ease-in',
         stagger: {
           each: 0.2,
-          from: 'left',
         },
       });
     },
@@ -69,14 +87,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#artists {
+  margin-top: 10% !important;
+}
 .circle {
-  min-width: 200px;
-  min-height: 200px;
-  shape-outside: circle();
-
+  width: 200px;
+  height: 200px;
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50%;
+}
+
+.artist-card .card {
+  z-index: 0;
+  height: 100%;
 }
 
 .info {
@@ -86,7 +111,6 @@ export default {
 h2 {
   margin: 0vh 0;
   transform: rotate(180deg);
-  // text-decoration: underline;
 }
 p {
   font-family: 'Courier New';
@@ -104,10 +128,6 @@ p {
   font-size: 1em !important;
 }
 @media screen and (min-width: 768px) {
-  h2 {
-    transform: rotate(180deg);
-    // text-decoration: underline;
-  }
   p {
     font-size: 2em;
   }

@@ -14,7 +14,7 @@ module.exports = {
       use: '@zefman/gridsome-source-instagram',
       options: {
         username: 'vill.artt', // Instagram username
-        typeName: 'instagramPhoto', // The GraphQL type you want the photos to be added under. Defaults to InstagramPhoto
+        typeName: 'InstagramPhoto', // The GraphQL type you want the photos to be added under. Defaults to InstagramPhoto
       },
     },
     {

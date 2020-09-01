@@ -118,6 +118,7 @@ export default {
     intersected() {
       this.showCta = true;
     },
+
     scrollToPaints() {
       let el = this.$el.getElementsByClassName('paint-structure')[0];
       el.scrollIntoView({ behavior: 'smooth' });
