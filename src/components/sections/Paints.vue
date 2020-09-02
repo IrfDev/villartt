@@ -1,5 +1,5 @@
 <template>
-  <div class="paint-structure " data-scroll>
+  <div class="paint-structure p-5" data-scroll>
     <h2>Pinturas</h2>
     <div
       v-for="(edge, edgeInedex) in pinturas"

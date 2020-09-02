@@ -2,11 +2,9 @@
   <div class="artists row m-0 justify-content-center" id="artists">
     <div class="col-12">
       <h2 class="title-section text-center">Artistas</h2>
-      <!-- <observer @intersect="intersected" :id="'artistas-card'" /> -->
     </div>
-
     <div
-      class="artist-card  col-md-4 col-12 mt-4"
+      class="artist-card col-md-4 col-12 mt-4"
       v-for="(villi, villiIndex) in $page.users.edges"
       :key="villiIndex"
     >
@@ -28,13 +26,13 @@
           <p>{{ villi.node.about }}</p>
         </div>
         <div
-          class="circle"
+          class="circles"
           :style="
             `background-image: url(https://admin.villartt.me${
               villi.node.imagen.url
             }`
           "
-        />
+        ></div>
       </div>
     </div>
   </div>
@@ -71,16 +69,26 @@ export default {
       tl.from('#artists h2', {
         duration: 1,
         rotate: '174deg',
-      }).from('#artists .artist-card .card', {
-        duration: 1,
-        opacity: 0.8,
-        transform: 'translateY(-4em)',
-        filter: 'blur(5px) grayscale(100%)',
-        ease: 'ease-in',
-        stagger: {
-          each: 0.2,
-        },
-      });
+      })
+        .from('#artists .artist-card .card', {
+          duration: 1,
+          opacity: 0.8,
+          transform: 'translateY(-5em)',
+          filter: 'blur(5px) grayscale(100%)',
+          ease: 'ease-in',
+          stagger: {
+            each: 0.2,
+          },
+        })
+        .from('#artists .artist-card .card .circles', {
+          duration: 1,
+          filter: 'hue-rotate(20deg)',
+          borderRadius: '15%',
+          ease: 'ease-in',
+          stagger: {
+            each: 0.2,
+          },
+        });
     },
   },
 };
@@ -90,13 +98,16 @@ export default {
 #artists {
   margin-top: 10% !important;
 }
-.circle {
+
+.circles {
   width: 200px;
   height: 200px;
+  float: left;
+  shape-outside: circle() border-box;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  border-radius: 50%;
+  border-radius: 11px;
 }
 
 .artist-card .card {
@@ -115,6 +126,9 @@ h2 {
 p {
   font-family: 'Courier New';
   color: #f9aed8;
+  float: left;
+  -webkit-shape-outside: circle();
+  shape-outside: ellipse(100px 200px at 50% 50%);
 }
 h3 {
   font-family: Montserrat;
