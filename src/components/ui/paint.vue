@@ -1,6 +1,9 @@
 <template>
-  <div class="card bg-dark text-white border-0">
-    <img
+  <div
+    class="individuals-paint"
+    :style="`background-image: url(https://admin.villartt.me${fotos[0].url})`"
+  >
+    <!-- <img
       :src="`https://admin.villartt.me${fotos[0].url}`"
       class="card-img img-fluid"
       :alt="`Villartt ${categoria}`"
@@ -10,7 +13,7 @@
     >
       <h5 class="card-title">-{{ titulo }}</h5>
       <p>👉🏻{{ descripcion }}</p>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -30,14 +33,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.individuals-paint {
+  height: 10em;
+  width: 10em;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 @media screen and (max-width: 768px) {
   .card:hover {
     img {
       filter: blur(2px) invert(100%) !important;
-    }
-    .card-title {
-    }
-    p {
     }
   }
 }
@@ -50,6 +56,7 @@ p {
 .card {
   overflow: hidden;
   border-radius: 8px;
+  max-height: 12em;
   font-family: Montserrat;
   font-weight: 500;
   box-shadow: 5px 4px 30px rgba(0, 0, 0, 0.358);

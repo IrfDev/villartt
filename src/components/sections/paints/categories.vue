@@ -1,8 +1,7 @@
 <template>
-  <div class="mt-5 mb-5">
+  <div class="mt-5 mb-5" id="categories-section">
     <h2 class="text-center cat">Categorias</h2>
     <div class="row category-row text-center justify-content-lg-center align-items-stretch m-0">
-      <observer @intersect="intersected" v-bind="options" :id="'categories'" />
       <div
         v-for="categoria in $page.categorias.edges"
         :key="categoria.id"
@@ -23,16 +22,17 @@
     </div>
 
     <transition @enter="enter">
-      <div class="container-fluid mt-4" v-if="active">
+      <div class="container-fluid mt-4 pr-lg-5 pl-lg-5" v-if="active">
         <h3 class="text-center title">{{ categoryTitle }}</h3>
         <p class="text-center">🎨 {{ categoryDescription }}</p>
-        <div class="paints row mt-3 align-items-center m-0 justify-content-center">
+        <div class="paints row mt-3 align-items-center m-0 justify-content-around">
           <div
-            class="ind-paint col-md-3 col-6 mt-3"
+            class="ind-paint col-md-3 m-1 col-5 mt-3 align-self-stretch"
             v-for="(paint, paintIndex) in categoryPaints"
             :key="paintIndex"
+            :style="`background-image: url(https://admin.villartt.me${paint.fotos[0].url})`"
           >
-            <paint class="actual-paint" v-bind="paint" />
+            <!-- <paint class="actual-paint align-self-stretch" v-bind="paint" /> -->
           </div>
         </div>
       </div>
@@ -42,8 +42,10 @@
 
 <script>
 import observer from '@/components/utilities/observer';
-import { TweenMax } from 'gsap';
 import paint from '@/components/ui/paint';
+import { gsap, TweenMax } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   name: 'Categories',
@@ -51,6 +53,7 @@ export default {
     paint,
     observer,
   },
+
   data() {
     return {
       active: false,
@@ -62,9 +65,26 @@ export default {
       },
     };
   },
+
+  mounted() {
+    this.startAnimation();
+  },
+
   methods: {
-    intersected() {
-      TweenMax.from('.category', {
+    startAnimation() {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#categories-section',
+          start: 'top bottom',
+          end: 'bottom bottom',
+          scrub: true,
+        },
+      });
+
+      tl.from('#artists h2', {
+        duration: 1,
+        rotate: '174deg',
+      }).from('#categories-section .category', {
         duration: 0.3,
         opacity: 0,
         filter: 'blur(10px) grayscale(100%)',
@@ -78,6 +98,7 @@ export default {
         },
       });
     },
+
     activeCategory({ titulo, pinturas, Descripci_n }) {
       function animation() {
         TweenMax.from('.ind-paint', {
@@ -105,6 +126,7 @@ export default {
       }
       animation();
     },
+
     enter() {
       TweenMax.from('.ind-paint', {
         duration: 0.5,
@@ -131,8 +153,13 @@ export default {
   flex-flow: row nowrap;
 }
 
-.paints {
-  min-height: 100%;
+.ind-paint {
+  height: 15em;
+  width: 10em;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 8px;
 }
 
 .category {
@@ -140,6 +167,7 @@ export default {
   background-attachment: fixed;
   background-position: top;
 }
+
 .category-wrapper {
   background-size: cover !important;
   padding: 8em 0%;
