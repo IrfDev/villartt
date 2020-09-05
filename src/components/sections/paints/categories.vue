@@ -32,7 +32,7 @@
             v-for="(paint, paintIndex) in categoryPaints"
             :key="paintIndex"
             :style="`background-image: url(https://admin.villartt.me${paint.fotos[0].url})`"
-            :class="{'non-active':openModal !== paintIndex && openModal,  'ye-active':openModal === paintIndex}"
+            :class="{'non-active':openModal !== paintIndex && openModal,  'ye-active':openModal === paintIndex, 'last-item':paintIndex === categoryPaints.length -1}"
             :id="`ind-paint-${paintIndex}`"
             @click.self="toggleModal(paintIndex)"
           >
@@ -139,11 +139,12 @@ export default {
 <style lang="scss" scoped>
 .close-modal {
   position: absolute;
-  top: 0;
-  padding: 0 1.5%;
+  top: -2%;
+  right: -1.5%;
+  padding: 0 1%;
+  font-size: 60%;
   background-color: #fff;
   border-radius: 50%;
-  right: 0;
   color: red;
   cursor: pointer;
 }
@@ -235,6 +236,9 @@ export default {
       transform-origin: center right;
     }
     transform: scale(2.5) !important;
+  }
+  &:last-of-type {
+    transform-origin: unset;
   }
 }
 
