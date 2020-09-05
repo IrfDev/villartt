@@ -1,6 +1,7 @@
 <template>
-  <Layout>
+  <Layout class="main-content">
     <new-header @clickHeader="scrollToPaints" />
+    <div class="background-skew" />
     <paints class="mt-5 mb-5" />
     <observer @intersect="intersected" :id="'main-cta-observer'" />
     <categories class="mt-5" />
@@ -82,6 +83,10 @@ import TheFooter from '@/components/sections/TheFooter.vue';
 import MainCta from '@/components/ui/MainCta.vue';
 import observer from '@/components/utilities/observer';
 
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
+gsap.registerPlugin(ScrollTrigger);
+
 export default {
   components: {
     NewHeader,
@@ -100,9 +105,169 @@ export default {
     };
   },
 
+  mounted() {
+    this.startAnimation();
+  },
+
   methods: {
     intersected() {
       this.showCta = true;
+    },
+
+    startAnimation() {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.main-content',
+          start: 'top top',
+          end: '15% top',
+          // end: 'bottom top',
+          scrub: true,
+        },
+      });
+
+      tl.fromTo(
+        '.background-skew',
+        {
+          duration: 3,
+          skewY: 4,
+        },
+        {
+          skewY: 0,
+        }
+      );
+
+      const tl2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#oddPaint',
+          start: 'top bottom',
+          end: 'bottom center',
+
+          scrub: true,
+        },
+      });
+
+      tl2
+        .fromTo(
+          '#oddPaint .odd-paint-pic-0',
+          {
+            duration: 0.3,
+            top: 50,
+          },
+          {
+            top: '-50',
+          },
+          0
+        )
+        .fromTo(
+          '#oddPaint .odd-paint-pic-1',
+          {
+            duration: 3,
+            top: '-50',
+          },
+          {
+            top: 50,
+          },
+          0
+        );
+
+      const tl3 = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#evenPaint',
+          start: 'top bottom',
+          end: 'bottom center',
+
+          scrub: true,
+        },
+      });
+
+      tl3
+        .fromTo(
+          '#evenPaint #even-paint-pic-1',
+          {
+            duration: 3,
+            top: 30,
+          },
+          {
+            top: '-30',
+          },
+          0
+        )
+        .fromTo(
+          '#evenPaint #even-paint-pic-0',
+          {
+            duration: 3,
+            top: '-50',
+          },
+          {
+            top: 50,
+          },
+          0
+        );
+
+      const tlC = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#categories-section',
+          start: 'top bottom',
+          end: 'bottom bottom',
+          scrub: true,
+        },
+      });
+
+      tlC.from('#categories-section .category', {
+        duration: 0.3,
+        opacity: 0,
+        filter: 'blur(10px) grayscale(100%)',
+        scale: 0.6,
+        y: 50,
+        x: -10,
+        ease: 'back',
+        stagger: {
+          each: 0.3,
+          from: 'random',
+        },
+      });
+
+      const tlArtists = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#artists',
+          start: '30% bottom',
+          end: 'bottom bottom',
+          scrub: true,
+        },
+      });
+
+      tlArtists
+        .from(
+          '#artists h2',
+          {
+            duration: 0.5,
+            rotate: '178deg',
+          },
+          0
+        )
+        .from(
+          '#artists .artist-card .card',
+          {
+            duration: 1,
+            opacity: 0.8,
+            transform: 'translateY(-5em)',
+            filter: 'blur(5px) grayscale(100%)',
+            ease: 'ease-in',
+            stagger: {
+              each: 0.2,
+            },
+          },
+          0
+        )
+        .from('#artists .artist-card .card .circles', {
+          duration: 1,
+          filter: 'hue-rotate(10deg)',
+          borderRadius: '15%',
+          ease: 'ease-in',
+          stagger: {
+            each: 0.2,
+          },
+        });
     },
 
     scrollToPaints() {
@@ -164,6 +329,25 @@ export default {
 </script>
 
 <style lang="scss">
+.background-skew {
+  position: absolute;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: white;
+  @media screen and (min-width: 800px) {
+    height: 15%;
+  }
+  transform-origin: top right;
+}
+
+@keyframes skweIntro {
+  to {
+    transform: skewY(3deg);
+  }
+}
+
 :root {
   --alfa-color: #e50092;
   --alfa-color-200: #fcd9ed;
@@ -194,9 +378,6 @@ export default {
 
 .typo-font-size.title {
   font-size: calc((var(--base-font-size) * 6) * var(--type-scale));
-}
-.typo-font-size.title.wingie {
-  font-size: calc((var(--base-font-size) * 7.5) * var(--type-scale));
 }
 
 p {

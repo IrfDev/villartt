@@ -6,7 +6,7 @@
       :key="edgeInedex"
       class="d-flex flex-column justify-content-between"
     >
-      <odd-paint v-if="edgeInedex % 2 === 0" v-bind="edge.node" />
+      <odd-paint ref="oddPaint" v-if="edgeInedex % 2 === 0" v-bind="edge.node" />
       <even-paint v-else v-bind="edge.node" />
     </div>
   </div>

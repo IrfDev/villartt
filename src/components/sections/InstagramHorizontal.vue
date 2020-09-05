@@ -3,7 +3,8 @@
     class="row p-5 align-items-stretch d-flex instagram-horizontal justify-content-center m-0 mb-5"
     @mouseenter="hoverRow = true"
     v-if="photos"
-    id="instagram-horizontal"
+    ref="instagram"
+    id="instagramHorizontal"
   >
     <div class="col-12 text-center">
       <h2>Instagram</h2>
@@ -13,23 +14,13 @@
       v-for="(post, postIndex) in firstPictures"
       :key="postIndex"
       :style="`background-image: url('${post.node.display_url}');`"
-    >
-      <!-- edge_media_to_caption {
-          edges {
-            node {
-              text
-      }-->
-    </div>
+    />
     <div
       v-if="hoverRow"
       class="col-10 col-lg-4 mt-5 pb-5 text-center cta-instagram justify-content-center"
     >
       <a href="https://www.instagram.com/vill.artt/" target="_blank">
-        <img
-          class="img-flui"
-          src="../../static/instagram-logo.png"
-          alt="instagram-logo"
-        />
+        <img class="img-flui" src="../../static/instagram-logo.png" alt="instagram-logo" />
       </a>
     </div>
   </div>
@@ -37,9 +28,6 @@
 
 <script>
 import axios from 'axios';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
-gsap.registerPlugin(ScrollTrigger);
 
 export default {
   name: 'InstagramHorizontalPost',
@@ -50,30 +38,11 @@ export default {
         `https://www.instagram.com/vill.artt/?__a=1`
       );
 
+      console.log(igProfileJson);
       this.photos =
         igProfileJson.data.graphql.user.edge_owner_to_timeline_media.edges;
-      this.startAnimation();
-    } catch (error) {
-      console.log(error);
-    }
-  },
-
-  methods: {
-    startAnimation() {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '#instagram-horizontal',
-          start: 'top bottom',
-          end: 'bottom bottom',
-          scrub: true,
-        },
-      });
-
-      tl.from('#instagram-horizontal ', {
-        duration: 1,
-        filter: 'blur(100px)',
-      });
-    },
+      console.log(this.photos);
+    } catch (error) {}
   },
 
   computed: {
@@ -110,7 +79,7 @@ export default {
     transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     margin: 0.5em 0.5em;
     transform: none;
-    flex-basis: 43%;
+    flex-basis: 42%;
   }
   .instagram-foto:hover {
     transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -146,7 +115,7 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  flex-basis: 40%;
+  flex-basis: 50%;
   margin-left: -3%;
   min-height: 14em;
   width: 100%;

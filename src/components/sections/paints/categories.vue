@@ -7,6 +7,7 @@
         :key="categoria.id"
         class="category col-5 mt-lg-3 mb-md-3"
         @click="activeCategory(categoria.node)"
+        :class="{'activeCategory':categoryTitle ===categoria.node.titulo}"
       >
         <h5>{{ categoria.node.titulo }}</h5>
         <div
@@ -27,12 +28,25 @@
         <p class="text-center">🎨 {{ categoryDescription }}</p>
         <div class="paints row mt-3 align-items-center m-0 justify-content-around">
           <div
-            class="ind-paint col-md-3 m-1 col-5 mt-3 align-self-stretch"
+            class="overflow-auto ind-paint col-md-3 m-1 col-5 mt-3 align-self-stretch d-flex"
             v-for="(paint, paintIndex) in categoryPaints"
             :key="paintIndex"
             :style="`background-image: url(https://admin.villartt.me${paint.fotos[0].url})`"
+            :class="{'non-active':openModal !== paintIndex && openModal,  'ye-active':openModal === paintIndex}"
+            :id="`ind-paint-${paintIndex}`"
+            @click.self="toggleModal(paintIndex)"
           >
-            <!-- <paint class="actual-paint align-self-stretch" v-bind="paint" /> -->
+            <span @click="closeModal" class="close-modal" v-if="openModal === paintIndex">X</span>
+            <span
+              class="info-paint text-center"
+              :class="openModal === paintIndex ? 'd-block align-self-end':'d-none'"
+            >
+              <p>
+                <i>{{paint.titulo}}</i>
+                <br />
+                <small>{{paint.descripcion}}</small>
+              </p>
+            </span>
           </div>
         </div>
       </div>
@@ -43,6 +57,7 @@
 <script>
 import observer from '@/components/utilities/observer';
 import paint from '@/components/ui/paint';
+
 import { gsap, TweenMax } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 gsap.registerPlugin(ScrollTrigger);
@@ -60,46 +75,18 @@ export default {
       categoryPaints: [],
       categoryTitle: '',
       categoryDescription: '',
-      options: {
-        // rootMargin: [0.25],
-      },
+      modalOptions: {},
+      openModal: null,
     };
   },
 
-  mounted() {
-    this.startAnimation();
-  },
-
   methods: {
-    startAnimation() {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '#categories-section',
-          start: 'top bottom',
-          end: 'bottom bottom',
-          scrub: true,
-        },
-      });
-
-      tl.from('#artists h2', {
-        duration: 1,
-        rotate: '174deg',
-      }).from('#categories-section .category', {
-        duration: 0.3,
-        opacity: 0,
-        filter: 'blur(10px) grayscale(100%)',
-        scale: 0.6,
-        y: 50,
-        x: -10,
-        ease: 'back',
-        stagger: {
-          each: 0.3,
-          from: 'random',
-        },
-      });
+    closeModal() {
+      this.openModal = 100000;
     },
 
     activeCategory({ titulo, pinturas, Descripci_n }) {
+      this.openModal = null;
       function animation() {
         TweenMax.from('.ind-paint', {
           duration: 0.5,
@@ -141,25 +128,114 @@ export default {
         },
       });
     },
+
+    toggleModal(index) {
+      this.openModal = index;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.close-modal {
+  position: absolute;
+  top: 0;
+  padding: 0 1.5%;
+  background-color: #fff;
+  border-radius: 50%;
+  right: 0;
+  color: red;
+  cursor: pointer;
+}
+.ind-paint:not(.ye-active) {
+  cursor: pointer;
+}
+.non-active {
+  z-index: 0;
+  transition: ease-in-out 0.5s;
+  cursor: pointer;
+  position: unset;
+  width: 100%;
+}
+
 .category-row {
   padding-bottom: 3em;
-
   overflow-y: auto;
   flex-flow: row nowrap;
 }
 
 .ind-paint {
-  height: 15em;
+  height: 10em;
   width: 10em;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 8px;
+  border-radius: 8px;
+  font-family: Montserrat;
+  font-weight: 500;
+  box-shadow: 5px 4px 30px rgba(0, 0, 0, 0.358);
+
+  &:hover {
+    box-shadow: 5px 4px 30px rgba(0, 0, 0, 0.534);
+  }
+  .info-paint {
+    background-color: var(--alfa-color);
+    font-size: 80%;
+    padding: 0 1.5%;
+    color: white;
+    margin: 0 auto;
+    border-radius: 11px 11px 0 0;
+  }
+  @media screen and (min-width: 800px) {
+    height: 15em;
+    width: 10em;
+  }
+}
+
+.ye-active {
+  position: relative;
+  z-index: 100;
+  overflow: visible !important;
+  margin: auto !important;
+  width: 100% !important;
+  flex-basis: 100%;
+  transform: scale(1.5) !important;
+  min-height: 15em;
+  min-width: 15em;
+  transition: 0.6s cubic-bezier(0.68, 1, 0.265, 1.55);
+  box-shadow: 5px 4px 300px 300px#000000c4;
+  &:hover {
+    box-shadow: 5px 4px 300px 300px#000000c4;
+  }
+  &:nth-of-type(3n + 1) {
+    transform-origin: unset;
+  }
+  &:nth-of-type(3n) {
+    transform-origin: unset;
+  }
+  &:nth-of-type(2n) {
+    transform-origin: center center;
+  }
+  &:nth-of-type(2n + 1) {
+    transform-origin: center center;
+  }
+
+  @media screen and (min-width: 800px) {
+    &:nth-of-type(2n) {
+      transform-origin: unset;
+    }
+    &:nth-of-type(2n + 1) {
+      transform-origin: unset;
+    }
+    &:nth-of-type(3n + 1) {
+      transform-origin: center left;
+    }
+    &:nth-of-type(3n) {
+      transform-origin: center right;
+    }
+    transform: scale(2.5) !important;
+  }
 }
 
 .category {
@@ -195,6 +271,16 @@ p,
 h5 {
   font-family: 'Courier New', Courier, monospace;
 }
+
+.activeCategory {
+  .category-wrapper {
+    /* border: 10px solid var(--alfa-color); */
+  }
+  h5 {
+    font-weight: bolder;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .category-row .category {
     flex-basis: 20%;
