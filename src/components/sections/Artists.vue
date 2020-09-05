@@ -39,58 +39,8 @@
 </template>
 
 <script>
-import observer from '@/components/utilities/observer';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
-gsap.registerPlugin(ScrollTrigger);
-
 export default {
   name: 'Artists',
-
-  components: {
-    observer,
-  },
-
-  mounted() {
-    this.startAnimation();
-  },
-
-  methods: {
-    startAnimation() {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '#artists',
-          start: 'top bottom',
-          end: 'bottom bottom',
-          scrub: true,
-        },
-      });
-
-      tl.from('#artists h2', {
-        duration: 1,
-        rotate: '174deg',
-      })
-        .from('#artists .artist-card .card', {
-          duration: 1,
-          opacity: 0.8,
-          transform: 'translateY(-5em)',
-          filter: 'blur(5px) grayscale(100%)',
-          ease: 'ease-in',
-          stagger: {
-            each: 0.2,
-          },
-        })
-        .from('#artists .artist-card .card .circles', {
-          duration: 1,
-          filter: 'hue-rotate(20deg)',
-          borderRadius: '15%',
-          ease: 'ease-in',
-          stagger: {
-            each: 0.2,
-          },
-        });
-    },
-  },
 };
 </script>
 

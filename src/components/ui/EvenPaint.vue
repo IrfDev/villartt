@@ -1,8 +1,7 @@
 // This is the second page
 <template>
-  <div class="mt-3 main-paint mt-5 row d-flex m-0 justify-content-center">
-    <observer @intersect="intersected" v-bind="options" />
-    <div class="paint order-md-1 order-1 col-md-11 col-11 justify-content-center d-flex">
+  <div id="evenPaint" class="mt-3 main-paint mt-5 row d-flex m-0 justify-content-center">
+    <div class="paint order-md-1 order-1 col-lg-11 col-12 justify-content-center d-flex">
       <img
         v-for="(foto, fotoIndex) in fotos"
         :key="fotoIndex"
@@ -25,19 +24,11 @@
 </template>
 
 <script>
-import observer from '@/components/utilities/observer';
-
 import PaintShow from '@/components/sections/paints/PaintShow';
-
-import gsap from 'gsap';
-let masterTL = gsap.timeline();
-
-import moment from 'moment';
 
 export default {
   name: 'EvenPaint',
   components: {
-    observer,
     PaintShow,
   },
 
@@ -48,12 +39,6 @@ export default {
         threshold: 1.0,
       },
     };
-  },
-
-  filters: {
-    fechaEnDias(date) {
-      return moment(date).locale('es').fromNow();
-    },
   },
 
   props: {

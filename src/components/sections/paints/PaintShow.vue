@@ -1,9 +1,5 @@
 <template>
-  <div
-    :id="`carouselControls-${titulo}`"
-    class="carousel slide"
-    data-ride="carousel"
-  >
+  <div :id="`carouselControls-${titulo}`" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div
         v-for="(foto, fotoIndex) in fotos"
@@ -11,11 +7,7 @@
         class="carousel-item"
         :class="{ active: fotoIndex === activeItem }"
       >
-        <img
-          :src="`https://admin.villartt.me${foto.url}`"
-          class="img-fluid"
-          alt="Villartt-pintura"
-        />
+        <img :src="`https://admin.villartt.me${foto.url}`" class="img-fluid" alt="Villartt-pintura" />
       </div>
     </div>
     <a
@@ -61,6 +53,10 @@ export default {
 <style lang="scss" scoped>
 .active {
   animation: activeItem 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.carousel {
+  min-width: 100%;
 }
 
 .carousel-inner {
