@@ -17,7 +17,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.11.0",
     "gridsome": "^0.7.0",
-    "gsap": "^3.5.1",
+    "gsap": "^3.6.0",
     "jest-vue-preprocessor": "^1.7.1",
     "moment": "^2.24.0",
     "scrollmagic": "^2.0.7",
